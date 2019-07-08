@@ -4,7 +4,7 @@ F5 Agility Labs - Index
 Welcome
 -------
 
-Welcome to the |classbold| lab at F5 Agility |year|
+Welcome to the |classbold| lab
 
 |repoinfo|
 
@@ -13,8 +13,12 @@ Welcome to the |classbold| lab at F5 Agility |year|
    :numbered:
    :caption: Contents:
    :glob:
-
+   
    intro*
    class*/class*
    examples
    markdown
+..   as3
+..   do
+..   together
+..   telemetry
