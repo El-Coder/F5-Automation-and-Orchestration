@@ -1,2 +1,2 @@
-Using AS3,DO,TS Together – Getting Started
+Using AS3,DO,TS Together – Lets Getting Started
 -----------------------------------
