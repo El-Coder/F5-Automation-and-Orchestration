@@ -1,0 +1,96 @@
+Using AS3 with Big-IQ – Getting Started 
+-----------------------------------
+
+You can use the same method to post a declaration to AS3 on BIG-IQ as for BIG-IP.
+
+Requirement
+~~~~~~~~~~~~~~~
+
+To use BIG-IQ must **POST** auth token for and login for authentication 
+
+.. code-block:: JSON
+
+    {
+    "username":"admin",
+    "password":"*******"
+    } 
+
+
+.. code-block:: JSON 
+
+    {
+    "refreshToken": {
+    "token": ""}
+    }
+
+
+.. code-block:: JSON 
+
+    {
+        "class": "AS3",
+        "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.7.0",
+            "id": "bigiq_app_test",
+            "label": "Test",
+            "remark": "Generic app",
+            "target": {
+                "hostname": "ip-10-1-1-7.us-west-2.compute.internal"
+            },
+            "BigIQ_App_Tenant": {
+                "class": "Tenant",
+                "BigIQApp": {
+                    "class": "Application",
+                    "template": "generic",
+                    "BigIQVS": {
+                        "class": "Service_Generic",
+                        "virtualAddresses": [
+                            "10.1.20.9"
+                        ],
+                        "virtualPort":80,
+                        "pool": "pool_with_vip"
+                    },
+                
+                    "pool_with_vip": {
+                        "class": "Pool",
+                        "monitors": [
+                            "http",
+                            {"use": "http_basic"},
+                            {"use": "http_index"},
+                            {"use": "http_default"}
+                        ],
+                        "members": [{
+                        "servicePort": 80,
+                        "serverAddresses": [
+                            "10.1.10.5"
+                        ]
+                        }]
+                    },
+                
+                    "http_basic": {
+                        "class": "Monitor",
+                        "monitorType": "http",
+                        "interval":4,
+                        "timeout": 13,
+                        "send": "GET /basic.html\r\n"
+                    },
+                
+                    "http_index": {
+                        "class": "Monitor",
+                        "monitorType": "http",
+                        "interval":5,
+                        "timeout": 16,
+                        "send": "GET /index.html\r\n"
+                    },
+                
+                    "http_default": {
+                        "class": "Monitor",
+                        "monitorType": "http",
+                        "interval":8,
+                        "timeout": 25,
+                        "send": "GET /index.html\r\n"
+                    }
+                }
+            }
+        }
+    }    

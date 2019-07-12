@@ -1,16 +1,10 @@
-Class - DO
+Declarative Onboarding
 ===================
 
-.. TODO:: Need class description
+This section of the demo is for the integration of Declarative Onboarding. The goal is to facilitate an automated configuration of L1-3 with a Big-IP. 
 
-This class covers the following topics:
 
-- Downloading a |f5| |bip| |ve|
-- Installing a |bip| |ve| image on a hypervisor
-- Installing a |f5| |bip| Appliance
-- Powering on a |bip| Appliance
-
-Expected time to complete: **3 hours**
+Expected time to complete: **1 hour**
 
 .. toctree::
    :maxdepth: 1

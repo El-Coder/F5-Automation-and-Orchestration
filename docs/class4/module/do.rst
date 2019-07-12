@@ -1,92 +1,37 @@
 Declarative Onboarding – Getting Started
 -----------------------------------
-Things that you need to get started:
 
-Apps
-Postman
-Putty
-Chrome - BigIP
-
-Files
-Eval Key – “F5-BIG-VE-BT-1G-V16-LIC”
--	Note that this is not a dev key RPM files
--	https://github.com/F5Networks/f5-declarative-onboarding/blob/master/dist/f5-declarative-onboarding-1.3.0-4.noarch.rpm
--	https://github.com/F5Networks/f5-appsvcs-extension/tree/master/dist/latest
-
-
-
-Things that you need to get started:
-iApps: Package Management LX Extension
--	Root access via UDF bigip (root/default)
--	“touch /var/config/rest/iapps/enable”
-Turn SSL Cert off in Postman
--	File  Settings  SSL certification verification (toggled off)
-
-
-
-Preconfigured
-
-1.	Postman
-2.	Putty
-3.	Chrome – BigIP
-
-
-.. NOTE::
-   In DO you can only POST and GET. Can’t PATCH
-You will overwrite things
-
-Phase One: Login to Environment
+Deploy UDF
 ~~~~~~~~
-1.	Navigate to udf.f5.com
-2.	Click ‘Blueprint’
-3.	Enter ‘A&O ASE Demo’ into search bar
-4.	Click ‘Start’
-5.	Navigate to ‘Details’  ‘Components’
-6.	Under ‘win2016’ click ‘Access’ dropdown  ‘RDP’
+.. image:: /_static/udf.png
 
-*	Find login information under ‘Details’  ‘Credentials’
-*	Login to win2016 RDP with the provided credentials
+Navigate to https://udf.f5.com
 
-7.	Now win2016 RDP is up and running
+Open “Blueprints” in the left menu bar
 
-Phase Two: Download Declarative Onboarding and Application Services 3 Extensions
+In the search bar enter, “A&O Toolchain Demo”
+
+Click the green “Deploy” button
+
+Open “Deployments” in the left menu bar
+
+In the “A&O Toolchain Demo” tile, click “Start”
+
+In the “A&O Toolchain Demo” tile, click “Details”
+
+Open “Components” in the menu bar
+
+Wait until all components have started
+
+Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
+
+
+Open Browser
 ~~~~~~~~
-1.	Open win2016 RDP
-2.	Open Chrome
-3.	Navigate to: https://github.com/F5Networks/f5-declarative-onboarding/blob/master/dist/ 
+Check Big-IP is blank 
 
-*	This is an extension for Declarative Onboarding
-*	Download the RPM file
 
-4.	Navigate to: https://github.com/F5Networks/f5-appsvcs-extension/tree/master/dist/latest
-
-*	This is an extension for Application Services 3 Extension
-*	Download the RPM file
-
-Phase Three: Enable the Big-IP to Accept the Extensions || Enable iControl LX Extensions
-~~~~~~~~
-1.	In your local browser, navigate to udf.f5.com
-2.	Click ‘Deployments’
-3.	Click ‘Details’  ‘A&O ASE Demo’  ‘Components’
-4.	Under ‘F5 Products’ tab, click ‘Access’ dropdown  ‘Web Shell’
-5.	Note that you are Root in Big-IP
-
-*	Enter command: “touch /var/config/rest/iapps/enable”
-*	Examine that iControl LX Extension has been installed on the Big-IP GUI
-
-6.	Open win2016 RDP 
-7.	Open Chrome
-8.	Navigate to Big-IP bookmark
-
-*	Login with admin / admin credentials
-
-9.	In Big-IP GUI
-
-*	Click on iApps  iControl LX
-*	Click upload
-*	Upload both the Declarative Onboarding and Application Services 3 Extension
-
-Phase Four: Postman
+Postman App
 ~~~~~~~~
 1.	Open win2016 RDP
 2.	Open the Postman application
@@ -97,8 +42,22 @@ Phase Four: Postman
 4.	In Preferences, toggle the SSL Certificate Verification off
 
 
-.. image:: /_static/image001.png
+.. NOTE::
+   In DO you can only **POST** and **GET**. Can’t **PATCH** You will overwrite things
 
+First we will check the version of DO with th **GET** command to the URI
+
+.. code-block:: TMSH
+
+ https://<BIG-IP>/mgmt/shared/declarative-onboarding/info
+
+Now we will onboard a big a Big-IP by using **POST** to the URI 
+
+.. code-block:: TMSH
+
+ https://<BIG-IP>/mgmt/shared/declarative-onboarding
+
+with the following declaration
 
 .. code-block:: JSON
 
@@ -181,3 +140,10 @@ Phase Four: Postman
             
         }
     }
+
+Open Browser
+~~~~~~~~
+Check Big-IP is activated 
+
+.. NOTE::
+   Don't revoke license 

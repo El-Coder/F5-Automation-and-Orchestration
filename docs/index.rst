@@ -14,11 +14,7 @@ Welcome to the |classbold| lab
    :caption: Contents:
    :glob:
    
-   intro*
+
    class*/class*
-   examples
-   markdown
-..   as3
-..   do
-..   together
-..   telemetry
+
+

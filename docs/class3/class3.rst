@@ -1,19 +1,18 @@
-Class - AS3
+Application Services 3 Extension (AS3)
 ===================
 
-.. TODO:: Need class description
+This section of the demo is for the integration of Application Services 3 Extension. The goal is to facilitate an automated configuration of L4-7 with a Big-IP. 
 
-This class covers the following topics:
 
-- Downloading a |f5| |bip| |ve|
-- Installing a |bip| |ve| image on a hypervisor
-- Installing a |f5| |bip| Appliance
-- Powering on a |bip| Appliance
+**Prerequisites**
 
-Expected time to complete: **3 hours**
+
+
+
+Expected time to complete: **1 hour**
 
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   */*
+   module*/module*
