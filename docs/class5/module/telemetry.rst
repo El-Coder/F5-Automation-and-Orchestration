@@ -1,133 +1,117 @@
-Telemetry Streaming – Getting Started
------------------------------------
-
-
 Setup AWS CloudWatch IAM User
 ----------------
-In your local browser, navigate to “https://federate.f5.com”
 
-Click on the “AWS Console” tile
+.. image:: /_static/user.png
 
-Open “Services” dropdown in the top menu bar
+1. In your local browser, navigate to “https://federate.f5.com”
 
-Under “Security, Identity and Compliance”, click on “IAM”
+2. Click on the “AWS Console” tile
 
-Click “Users” in the left menu bar
+3. Open “Services” dropdown in the top menu bar
 
-Click on the “Add User” button
+4. Under “Security, Identity and Compliance”, click on “IAM”
 
-Under Set User Details enter a user name (test_user)
+5. Click “Users” in the left menu bar
 
-Under Select AWS access type select Programmatic access
+6. Click on the “Add User” button
 
-Under Add user to group select NE-Sales-Admins, Click “Next: Tags”
+7. Under Set User Details enter a user name (test_user)
 
-Click “Next: Review”
+8. Under Select AWS access type select Programmatic access
 
-Click “Create User”
+9. Under Add user to group select NE-Sales-Admins, Click “Next: Tags”
 
-Copy the Access Key and Secret access key and paste them in Notes or Stickies
+10. Click “Next: Review”
 
-Click “Close”
+11. Click “Create User”
+
+12. Copy the Access Key and Secret access key and paste them in Notes or Stickies
+
+13. Click “Close”
 
 
 Setup AWS CloudWatch Log Group
 ----------------
-In your local browser, navigate to “https://federate.f5.com”
+1. In your local browser, navigate to “https://federate.f5.com”
 
-Click on the “AWS Console” tile
+2. Click on the “AWS Console” tile
 
-Open “Services” dropdown in the top menu bar
+3. Open “Services” dropdown in the top menu bar
 
-Under “Management & Governance”, click on “Cloudwatch”
+4. Under “Management & Governance”, click on “Cloudwatch”
 
-Click “Logs” in the left menu bar
+5. Click “Logs” in the left menu bar
 
-Under the “Actions” button dropdown, click “Create log group”
+6. Under the “Actions” button dropdown, click “Create log group”
 
-In “Log Group Name” enter “test_log_group”, click “Create log group”
+7. In “Log Group Name” enter “test_log_group”, click “Create log group”
 
-Click “test_log_group”
+8. Click “test_log_group”
 
-Click “Create Log Stream” button
+9. Click “Create Log Stream” button
 
-In “Log Stream Name” enter “test_log_stream”, click “Create Log Stream”
-
-AWS CloudWatch IAM user
-- Create a ticket in ServiceNow for access to an AWS IAM use
-AWS CloudWatch Setup – Log Group, Log Stream, Grap
-https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html
-
-- Create a Log Group
-
-    - Open the CloudWatch console at https://console.aws.amazon.com/cloudwatch/.
-    - In the navigation pane, choose Logs.
-    - Choose Actions, Create log group. 
-    - Type a name for the log group and choose Create log group.
-
-- Create a Log Stream
-
-    - Click Log Group
-    - Click Create Log Stream
-
-- Create Graph 
+10. In “Log Stream Name” enter “test_log_stream”, click “Create Log Stream”
 
 
 Deploy and Start UDF
 ----------------
 .. image:: /_static/udf.png
 
-Navigate to https://udf.f5.com
+1. Navigate to https://udf.f5.com
 
-Open “Blueprints” in the left menu bar
+2. Open “Blueprints” in the left menu bar
 
-In the search bar enter, “A&O Toolchain Demo”
+3. In the search bar enter, “A&O Toolchain Demo”
 
-Click the green “Deploy” button
+4. Click the green “Deploy” button
 
-Open “Deployments” in the left menu bar
+5. Open “Deployments” in the left menu bar
 
-In the “A&O Toolchain Demo” tile, click “Start”
+6. In the “A&O Toolchain Demo” tile, click “Start”
 
-In the “A&O Toolchain Demo” tile, click “Details”
+7. In the “A&O Toolchain Demo” tile, click “Details”
 
-Open “Components” in the menu bar
+8. Open “Components” in the menu bar
 
-Wait until all components have started
+9. Wait until all components have started
 
-Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
+10. Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
+
 
 Login to UDF
 ----------------
-Login to Big-IP
-Open Firefox
-Search “https://10.1.1.7/”
-Login Credentials: admin - admin
-
-Open AWS CloudWatch
-Open Browser on local machine
-Navigate to Federate >> AWS 4261 Console
+1. Login to Big-IP
+2. Open Firefox
+3. Search “https://10.1.1.7/”
+4. Login Credentials: admin - admin
+5. Open AWS CloudWatch
+6. Open Browser on local machine
+7. Navigate to Federate >> AWS 4261 Console
 
 Optional: Show Zero Traffic in AWS CloudWatch 
-Navigate to AWS CloudWatch
-Under Services Tab in top left select CloudWatch
+
+8. Navigate to AWS CloudWatch
+9. Under Services Tab in top left select CloudWatch
 
 To view logs—
 In the left Menu Bar select Logs
 Select AO_Log_Group
 Select AO_Log_Stream
-Show that there’s no
+Show that there’s no logs.
 
 To view graph —
-Scroll down to Default Dashboard
+Scroll down to Default Dashboard 
+
+.. Aniket to update
 
 
-Postman App
+
+Open Postman App
 ----------------
 
-Create a new collection name it – Telemetry Streaming Collection
-Create a new Folder named – Telemetry Streaming 
-Create a new request named – Big-IP-AWS-CloudWatch
+1. Create a new collection name it – Telemetry Streaming Collection
+2. Create a new Folder named – Telemetry Streaming 
+3. Create a new request named – Big-IP-AWS-CloudWatch
 Auth - basic auth, admin admin
 
 .. code-block:: HTTPS
@@ -161,35 +145,51 @@ Auth - basic auth, admin admin
         }
     }
 
+4. Create a new request named – Big-IP-AWS-check info
+Auth - basic auth, admin admin
+
+.. code-block:: HTTPS
+
+ GET: https://10.1.1.7/mgmt/shared/telemetry/info
+
+5. Create a new request named – Big-IP-AWS-Check if TS Avail
+Auth - basic auth, admin admin
+
+.. code-block:: HTTPS
+
+ GET: https://10.1.1.7/mgmt/shared/telemetry/declare
 
 Generate Traffic 
 ----------------
-Open another tab in Firefox in Windows Server
-Search 10.1.20.9
-Refresh the page a few times
+1. Open another tab in Firefox in Windows Server
+2. Search 10.1.20.9
+3. Refresh the page a few times
 
 Show Streamed Traffic in AWS CloudWatch 
 ----------------
-Navigate to AWS CloudWatch
+1. Navigate to AWS CloudWatch
 Under Services Tab in top left select CloudWatch
 
-To view logs—
+2. To view logs—
 In the left Menu Bar select Logs
 Select AO_Log_Group
 Select AO_Log_Stream
 
-To view graph —
+3. To view graph —
 Scroll down to Default Dashboard
 
 Create Custom Metric
 ----------------
-Select Logs in left menu bar
-Select 0 filters under Metric Filters
-Select Add Metric Filter
-Select Assign Metric
-Under Create Metric Filter and Assign a Metric
--	Filter Name: custom_filtter_1
--	Metric Name: custom_metric_1
+1. Select Logs in left menu bar
+2. Select 0 filters under Metric Filters
+3. Select Add Metric Filter
+4. Select Assign Metric
+5. Under Create Metric Filter and Assign a Metric
+
+    - Filter Name: custom_filtter_1
+    - Metric Name: custom_metric_1
+
+
 
 
 

@@ -10,6 +10,8 @@ IAM user access key and secret key in UDF Documentation.
 
 **Prerequisites**
 
+.. NOTE:: This lab guide assumes you know how to use postman 
+   if not follow this tutorial https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html
 
 Get access to AWS CloudWatch IAM – Note that this could take an extended amount of time (2 days avg)
 In your local browser, navigate to https://federate.f5.com

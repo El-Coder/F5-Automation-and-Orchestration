@@ -2,42 +2,42 @@ Deploy UDF
 -----------
 .. image:: /_static/udf.png
 
-Navigate to https://udf.f5.com
+1. Navigate to https://udf.f5.com
 
-Open “Blueprints” in the left menu bar
+2. Open “Blueprints” in the left menu bar
 
-In the search bar enter, “A&O Toolchain Demo”
+3. In the search bar enter, “A&O Toolchain Demo”
 
-Click the green “Deploy” button
+4. Click the green “Deploy” button
 
-Open “Deployments” in the left menu bar
+5. Open “Deployments” in the left menu bar
 
-In the “A&O Toolchain Demo” tile, click “Start”
+6. In the “A&O Toolchain Demo” tile, click “Start”
 
-In the “A&O Toolchain Demo” tile, click “Details”
+7. In the “A&O Toolchain Demo” tile, click “Details”
 
-Open “Components” in the menu bar
+8. Open “Components” in the menu bar
 
-Wait until all components have started
+9. Wait until all components have started
 
-Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
+10. Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
 
-Open Browser
+Open Browser in RDP
 -----------
 
-.. NOTE:: That no application is already on big-ip
+.. NOTE:: No application is already on Big-IP
 
 .. image:: /_static/noapp.png
 
-Open Postman
+Open Postman and Create Partition
 -----------
-Using Postman we will first check the verison of AS3 the |bip| has by using a **GET** command to the following URI 
+1. Using Postman we will first check the verison of AS3 the |bip| has by using a **GET** command to the following URI 
 
 .. code-block:: TMSH
 
     https://<BIG-IP>/mgmt/shared/appsvcs/info
 
-Using Postman we will modify |bip| by using **POST** commands to the following URI 
+2. Using Postman we will modify |bip| by using **POST** commands to the following URI 
 
 
 .. code-block:: TMSH
@@ -99,14 +99,14 @@ Using Postman we will modify |bip| by using **POST** commands to the following U
         }
     }
 
-Open Browser and check now Big-IP has application 
+3. Open Browser and check now Big-IP has application 
 
 
 
 Clear Partition
 -----------
 
-Now we will delete the application using the **POST** command again to the following URI 
+1. Now we will delete the application using the **POST** command again to the following URI 
 
 .. code-block:: TMSH
 
@@ -126,4 +126,4 @@ Now we will delete the application using the **POST** command again to the follo
     }
  }
 
-Open Browser and check now Big-IP has no application 
+2. Open Browser and check that Big-IP has no application 

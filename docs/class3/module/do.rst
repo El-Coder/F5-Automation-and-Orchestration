@@ -1,63 +1,74 @@
 Declarative Onboarding – Getting Started
 -----------------------------------
 
+.. NOTE:: This lab already has RPM file. 
+   To manually install follow https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/installation.html
+
 Deploy UDF
 ~~~~~~~~
 .. image:: /_static/udf.png
 
-Navigate to https://udf.f5.com
+1. Navigate to https://udf.f5.com
 
-Open “Blueprints” in the left menu bar
+2. Open “Blueprints” in the left menu bar
 
-In the search bar enter, “A&O Toolchain Demo”
+3. In the search bar enter, “A&O Toolchain Demo”
 
-Click the green “Deploy” button
+4. Click the green “Deploy” button
 
-Open “Deployments” in the left menu bar
+5. Open “Deployments” in the left menu bar
 
-In the “A&O Toolchain Demo” tile, click “Start”
+6. In the “A&O Toolchain Demo” tile, click “Start”
 
-In the “A&O Toolchain Demo” tile, click “Details”
+7. In the “A&O Toolchain Demo” tile, click “Details”
 
-Open “Components” in the menu bar
+8. Open “Components” in the menu bar
 
-Wait until all components have started
+9. Wait until all components have started
 
-Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
+10. Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
 
 
-Open Browser
+Open Browser in RDP
 ~~~~~~~~
-Check Big-IP is blank 
+1. Check Big-IP is blank 
 
 
 Postman App
 ~~~~~~~~
 1.	Open win2016 RDP
 2.	Open the Postman application
-3.	In the top left, click Import
-
-*	Click “Import from link” – will set up a link for collection and environment
-
-4.	In Preferences, toggle the SSL Certificate Verification off
+3.	In Preferences, toggle the SSL Certificate Verification off
 
 
 .. NOTE::
    In DO you can only **POST** and **GET**. Can’t **PATCH** You will overwrite things
 
-First we will check the version of DO with th **GET** command to the URI
+5. First we will check the version of DO with the **GET** command to the URI
 
 .. code-block:: TMSH
 
  https://<BIG-IP>/mgmt/shared/declarative-onboarding/info
 
-Now we will onboard a big a Big-IP by using **POST** to the URI 
+6. Now we will check to see the iControl LX extensions install on the BIG-IP with the **GET** command to the URI.
+
+.. code-block:: TMSH
+
+ https://10.1.1.7/mgmt/shared/iapp/installed-packages
+
+7. Now we will check to see the current config on the BIG-IP with the **GET** command to the URI.
+
+.. code-block:: TMSH
+
+ https://10.1.1.7/mgmt/shared/declarative-onboarding?show=full
+
+8. Now we will onboard a big a Big-IP by using **POST** to the URI 
 
 .. code-block:: TMSH
 
  https://<BIG-IP>/mgmt/shared/declarative-onboarding
 
-with the following declaration
+with the following declaration:
 
 .. code-block:: JSON
 
@@ -68,14 +79,8 @@ with the following declaration
         
         "Common": {
             "class": "Tenant",
-            "hostname": "<hostname-of-bigip>",
-            "myLicense": {
-                "class": "License",
-                "licenseType": "regKey",
-                "overwrite": "true",
-                "regKey": "<Reg-Key>"
-            }
-            
+            "hostname": "ip-10-1-1-4.us-west-2.compute.internal",
+
             "myDns": {
                 "class": "DNS",
                 "nameServers": [
@@ -107,7 +112,7 @@ with the following declaration
             
             "internal-self": {
                 "class": "SelfIp",
-                "address": "10.1.10.10/24",
+                "address": "10.1.10.99/24",
                 "vlan": "internal",
                 "allowService": "default",
                 "trafficGroup": "traffic-group-local-only"
@@ -125,7 +130,7 @@ with the following declaration
             
             "external-self": {
                 "class": "SelfIp",
-                "address": "10.1.20.10/24",
+                "address": "10.1.20.99/24",
                 "vlan": "external",
                 "allowService": "none",
                 "trafficGroup": "traffic-group-local-only"
@@ -133,7 +138,7 @@ with the following declaration
             
             "external_default_gateway": {
                 "class": "Route",
-                "gw": "10.1.10.1",
+                "gw": "10.1.10.9",
                 "network": "default",
                 "mtu": 1500
             }
@@ -141,9 +146,15 @@ with the following declaration
         }
     }
 
-Open Browser
+9. Now we will check tasks with the **GET** command to the URI.
+
+.. code-block:: TMSH
+
+ https://10.1.1.4/mgmt/shared/declarative-onboarding/task/
+
+Open Browser in RDP
 ~~~~~~~~
-Check Big-IP is activated 
+1. Check Big-IP is activated 
 
 .. NOTE::
    Don't revoke license 
