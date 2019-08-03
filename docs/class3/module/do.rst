@@ -5,7 +5,7 @@ Declarative Onboarding – Getting Started
    To manually install follow https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/installation.html
 
 Deploy UDF
-~~~~~~~~
+~~~~~~~~~~ 
 .. image:: /_static/udf.png
 
 1. Navigate to https://udf.f5.com
@@ -28,23 +28,33 @@ Deploy UDF
 
 10. Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
 
+.. image:: /_static/rdp.png
 
 Open Browser in RDP
-~~~~~~~~
-1. Check Big-IP is blank 
+~~~~~~~~~~~~~~~~~~~
+.. image:: /_static/chrome.png
 
+1. Open Chrome
+2. Search “https://10.1.1.7/”
+3. Login Credentials: admin - admin
+4. Check BIG-IP is blank 
 
 Postman App
-~~~~~~~~
-1.	Open win2016 RDP
-2.	Open the Postman application
-3.	In Preferences, toggle the SSL Certificate Verification off
+~~~~~~~~~~~ 
+1.	Open the Postman application
 
+.. image:: /_static/desktop.png
+
+2.	In Preferences, toggle the SSL Certificate Verification off
+
+.. image:: /_static/ssl.png
 
 .. NOTE::
    In DO you can only **POST** and **GET**. Can’t **PATCH** You will overwrite things
 
 5. First we will check the version of DO with the **GET** command to the URI
+
+.. image:: /_static/post.png
 
 .. code-block:: TMSH
 
@@ -62,7 +72,7 @@ Postman App
 
  https://10.1.1.7/mgmt/shared/declarative-onboarding?show=full
 
-8. Now we will onboard a big a Big-IP by using **POST** to the URI 
+8. Now we will onboard a big a BIG-IP by using **POST** to the URI 
 
 .. code-block:: TMSH
 
@@ -153,8 +163,12 @@ with the following declaration:
  https://10.1.1.4/mgmt/shared/declarative-onboarding/task/
 
 Open Browser in RDP
-~~~~~~~~
-1. Check Big-IP is activated 
+~~~~~~~~~~~~~~~~~~~ 
+1. Check BIG-IP is activated 
 
-.. NOTE::
+.. image:: /_static/activated.png
+
+.. IMPORTANT::
    Don't revoke license 
+
+.. NOTE:: This is the end of the lab

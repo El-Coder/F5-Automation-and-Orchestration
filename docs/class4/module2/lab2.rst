@@ -1,4 +1,4 @@
-Using AS3 with Big-IQ – Getting Started 
+Using AS3 with BIG-IQ – Getting Started 
 -----------------------------------
 
 You can use the same method to post a declaration to AS3 on BIG-IQ as for BIG-IP. F5 disables basic authentication for HTTP/HTTPS requests to the BIG-IQ API by default for security enhancement.  
@@ -20,6 +20,7 @@ Log in and Declaration
     "username":"admin",
     "password":"*******"
     } 
+.. image:: /_static/iq.png
 
 2. From the response above **POST** the refresh token below after access token expires.
 
@@ -135,4 +136,8 @@ Clear Partition
         }
     }
 
-2.  Open Browser and check that Big-IQ has no application
+2.  Open Browser and check that BIG-IQ has no application
+
+.. image:: /_static/noas3.png
+
+.. NOTE:: This is the end of the lab

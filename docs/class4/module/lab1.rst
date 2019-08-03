@@ -22,15 +22,27 @@ Deploy UDF
 
 10. Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”
 
-Open Browser in RDP
------------
+.. image:: /_static/rdp.png
 
-.. NOTE:: No application is already on Big-IP
+Open Browser in RDP
+------------------- 
+.. image:: /_static/chrome.png
+
+1. Open Chrome
+2. Search “https://10.1.1.7/”
+3. Login into BIG-IP Credentials: admin - admin
 
 .. image:: /_static/noapp.png
 
+.. NOTE:: No application is already on BIG-IP
+
 Open Postman and Create Partition
------------
+--------------------------------- 
+
+.. image:: /_static/desktop.png
+
+.. image:: /_static/post.png
+
 1. Using Postman we will first check the verison of AS3 the |bip| has by using a **GET** command to the following URI 
 
 .. code-block:: TMSH
@@ -99,12 +111,12 @@ Open Postman and Create Partition
         }
     }
 
-3. Open Browser and check now Big-IP has application 
+3. Open Browser and check now BIG-IP has application 
 
-
+.. image:: /_static/app.png
 
 Clear Partition
------------
+---------------
 
 1. Now we will delete the application using the **POST** command again to the following URI 
 
@@ -126,4 +138,8 @@ Clear Partition
     }
  }
 
-2. Open Browser and check that Big-IP has no application 
+2. Open Browser and check that BIG-IP has no application 
+
+.. image:: /_static/noas3.png
+
+.. NOTE:: This is the end of the lab
