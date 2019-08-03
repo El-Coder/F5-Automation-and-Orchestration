@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<head>
+  
+  <!--STAGING:-->
+  <script src="https://assets.adobedtm.com/50164577268f481934e5d57dbfb78f929164cd0d/satelliteLib-ea775cfabef5fca8b04e9392f20c986c0724a7c3-staging.js"></script>
+  <!--Production:-->
+  <script src="https://assets.adobedtm.com/50164577268f481934e5d57dbfb78f929164cd0d/satelliteLib-ea775cfabef5fca8b04e9392f20c986c0724a7c3.js"></script>
+    <title>4.1. Setup AWS CloudWatch IAM User</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="kb_doc_type" content="Manual"/>
+  <meta name="kb_doc_type" content="User Guide"/>
+  <meta name="title" content="4.1. Setup AWS CloudWatch IAM User"/>
+  <meta name="product" content="F5-Automation-and-Orchestration"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="None"/>
+  <meta name="archived" content="Archived documents excluded"/>
+
+  
+  
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text"> jQuery.noConflict(true)</script>
+
+</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4.1. Setup AWS CloudWatch IAM User &#8212; F5-Automation-and-Orchestration  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="4. Telemetry Streaming" href="../class5.html" />
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="dismiss">
+      <button type="button" class="btn btn-info navbar-btn site-hidden"><i class="fa fa-align-justify"></i></button>
+    </div>
+    <div id="sidebar" class="section-nav">
+      <nav class="nav-sidebartoc">
+        <h5>F5-Automation-and-Orchestration  documentation </h5>
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <h5>Current Page</h5>
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">4.1. Setup AWS CloudWatch IAM User</a></li>
+<li><a class="reference internal" href="#setup-aws-cloudwatch-log-group">4.2. Setup AWS CloudWatch Log Group</a></li>
+<li><a class="reference internal" href="#deploy-and-start-udf">4.3. Deploy and Start UDF</a></li>
+<li><a class="reference internal" href="#configure-postman">4.4. Configure Postman</a></li>
+<li><a class="reference internal" href="#generate-traffic-on-big-ip">4.5. Generate Traffic on BIG-IP</a></li>
+<li><a class="reference internal" href="#view-logs-in-aws-cloudwatch">4.6. View Logs in AWS CloudWatch</a></li>
+</ul>
+
+         </span>
+        <hr>
+        <h5>Site Contents</h5>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">1. Environments &amp; Lab Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">2. Declarative Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">3. Application Services 3 Extension (AS3)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class5.html">4. Telemetry Streaming</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. Setup AWS CloudWatch IAM User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-aws-cloudwatch-log-group">4.2. Setup AWS CloudWatch Log Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-and-start-udf">4.3. Deploy and Start UDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-postman">4.4. Configure Postman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-traffic-on-big-ip">4.5. Generate Traffic on BIG-IP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-logs-in-aws-cloudwatch">4.6. View Logs in AWS CloudWatch</a></li>
+</ul>
+</li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+  
+  <div class="main active" id="content">
+    <article class="docs-container site-article-inner">
+            <nav class="site-breadcrumb-nav site-nav">
+          <ul class="site-breadcrumb-list">
+            <li class="breadcrumb-item"><button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn site-hidden"><i class="fa fa-align-justify"></i></button>&#x20 <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">F5-Automation-and-Orchestration </a> &gt; 4.1. Setup AWS CloudWatch IAM User</li>
+          </ul>
+      </nav>
+      
+      
+
+    
+  <div class="section" id="setup-aws-cloudwatch-iam-user">
+<h1>4.1. Setup AWS CloudWatch IAM User<a class="headerlink" href="#setup-aws-cloudwatch-iam-user" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>In your local browser, navigate to “<a class="reference external" href="https://federate.f5.com">https://federate.f5.com</a>”</li>
+</ol>
+<img alt="../../_images/federate.png" src="../../_images/federate.png" />
+<ol class="arabic simple" start="2">
+<li>Click on the “AWS Console” tile</li>
+</ol>
+<img alt="../../_images/aws.png" src="../../_images/aws.png" />
+<ol class="arabic simple" start="3">
+<li>Open “Services” dropdown in the top menu bar</li>
+</ol>
+<img alt="../../_images/services.png" src="../../_images/services.png" />
+<ol class="arabic simple" start="4">
+<li>Under “Security, Identity and Compliance”, click on “IAM”</li>
+</ol>
+<img alt="../../_images/iam.png" src="../../_images/iam.png" />
+<ol class="arabic simple" start="5">
+<li>Click “Users” in the left menu bar</li>
+</ol>
+<img alt="../../_images/users.png" src="../../_images/users.png" />
+<ol class="arabic simple" start="6">
+<li>Click on the “Add User” button</li>
+</ol>
+<img alt="../../_images/add_user.png" src="../../_images/add_user.png" />
+<ol class="arabic simple" start="7">
+<li>Under Set User Details enter a user name “my_user”</li>
+<li>Under Select AWS access type select Programmatic access</li>
+<li>Select the Blue “Next: Permissions” button on the bottom right</li>
+</ol>
+<img alt="../../_images/my_user.png" src="../../_images/my_user.png" />
+<ol class="arabic simple" start="10">
+<li>Under “Add user to group” select any group with “Administrator Access” as an Attached Policy</li>
+<li>Select the Blue “Next: Tags” button on the bottom right</li>
+</ol>
+<img alt="../../_images/next_tags.png" src="../../_images/next_tags.png" />
+<ol class="arabic simple" start="12">
+<li>Dismiss the “Add User” section by selecting the Blue “Next: Review” button on the bottom right</li>
+<li>Dismiss the “Review” section by selecting the Blue “Create User” button on the bottom right</li>
+<li>Copy the Access Key and Secret access key and paste them in Notes or Stickies. Close the window by clicking “Close”</li>
+</ol>
+<img alt="../../_images/access.png" src="../../_images/access.png" />
+</div>
+<div class="section" id="setup-aws-cloudwatch-log-group">
+<h1>4.2. Setup AWS CloudWatch Log Group<a class="headerlink" href="#setup-aws-cloudwatch-log-group" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>In your local browser, navigate to “<a class="reference external" href="https://federate.f5.com">https://federate.f5.com</a>”</li>
+<li>Click on the “AWS Console” tile</li>
+</ol>
+<img alt="../../_images/aws.png" src="../../_images/aws.png" />
+<ol class="arabic simple" start="3">
+<li>Open “Services” dropdown in the top menu bar</li>
+</ol>
+<img alt="../../_images/aws_tile.png" src="../../_images/aws_tile.png" />
+<ol class="arabic simple" start="4">
+<li>Open “Services” dropdown in the top menu bar</li>
+</ol>
+<img alt="../../_images/services.png" src="../../_images/services.png" />
+<ol class="arabic simple" start="5">
+<li>Under “Management &amp; Governance”, click on “Cloudwatch”</li>
+</ol>
+<img alt="../../_images/cloudwatch.png" src="../../_images/cloudwatch.png" />
+<ol class="arabic simple" start="6">
+<li>Click “Logs” in the left menu bar</li>
+</ol>
+<img alt="../../_images/logs.png" src="../../_images/logs.png" />
+<ol class="arabic simple" start="7">
+<li>Click the blue “Let’s Get Started” button</li>
+</ol>
+<img alt="../../_images/start.png" src="../../_images/start.png" />
+<ol class="arabic simple" start="8">
+<li>Click the grey “Create Log Group” button</li>
+</ol>
+<img alt="../../_images/create_log.png" src="../../_images/create_log.png" />
+<ol class="arabic simple" start="9">
+<li>In “Log Group Name” enter “my_log_group”, click “Create log group”</li>
+</ol>
+<img alt="../../_images/my_log.png" src="../../_images/my_log.png" />
+<ol class="arabic simple" start="10">
+<li>Click “test_log_group”</li>
+</ol>
+<img alt="../../_images/my_log_g.png" src="../../_images/my_log_g.png" />
+<ol class="arabic simple" start="11">
+<li>Click “Create Log Stream” button</li>
+</ol>
+<img alt="../../_images/logstream.png" src="../../_images/logstream.png" />
+<ol class="arabic simple" start="12">
+<li>In “Log Stream Name” enter “test_log_stream”, click “Create Log Stream”</li>
+</ol>
+<img alt="../../_images/test_log.png" src="../../_images/test_log.png" />
+</div>
+<div class="section" id="deploy-and-start-udf">
+<h1>4.3. Deploy and Start UDF<a class="headerlink" href="#deploy-and-start-udf" title="Permalink to this headline">¶</a></h1>
+<img alt="../../_images/udf.png" src="../../_images/udf.png" />
+<ol class="arabic simple">
+<li>Navigate to <a class="reference external" href="https://udf.f5.com">https://udf.f5.com</a></li>
+<li>Open “Blueprints” in the left menu bar</li>
+<li>In the search bar enter, “A&amp;O Toolchain Demo”</li>
+<li>Click the green “Deploy” button</li>
+<li>Open “Deployments” in the left menu bar</li>
+</ol>
+<p>6. In the “A&amp;O Toolchain Demo” tile, click “Start”. Open “Components” in the menu bar
+Wait until all components have started.</p>
+<img alt="../../_images/udf1.png" src="../../_images/udf1.png" />
+<ol class="arabic simple" start="7">
+<li>Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”</li>
+</ol>
+<img alt="../../_images/rdp.png" src="../../_images/rdp.png" />
+<ol class="arabic simple" start="8">
+<li>Open the RDP session download. Login credentials can be found by navigating to “Details” in the win2016 component</li>
+</ol>
+<img alt="../../_images/details.png" src="../../_images/details.png" />
+<ol class="arabic simple" start="9">
+<li>Once in the win2016 component navigate to the “Details” tab and find the credentials for the RDP session highlighted below</li>
+</ol>
+<img alt="_static/components.png" src="_static/components.png" />
+<p>Enter the credentials for the RDP session to begin your session</p>
+</div>
+<div class="section" id="configure-postman">
+<h1>4.4. Configure Postman<a class="headerlink" href="#configure-postman" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Once in the RDP session, open the Postman application</li>
+</ol>
+<img alt="../../_images/desktop.png" src="../../_images/desktop.png" />
+<ol class="arabic simple" start="2">
+<li>At the bottom of the page in grey text select “Skip signing in and take me straight to the app”</li>
+</ol>
+<img alt="../../_images/skip.png" src="../../_images/skip.png" />
+<ol class="arabic simple" start="3">
+<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating File  Settings  under the General tab, toggle SSL certification verification</li>
+</ol>
+<img alt="../../_images/settings.png" src="../../_images/settings.png" />
+<img alt="../../_images/ssl.png" src="../../_images/ssl.png" />
+<ol class="arabic simple" start="4">
+<li>For Collection Name enter “Telemetry Streaming Collection” and click “Create”</li>
+</ol>
+<img alt="../../_images/collection.png" src="../../_images/collection.png" />
+<ol class="arabic simple" start="5">
+<li>In the newly created Telemetry Streaming Collection, click the three dots and select “Add Request”</li>
+</ol>
+<img alt="../../_images/request.png" src="../../_images/request.png" />
+<ol class="arabic simple" start="6">
+<li>In the pop-up window enter “BIG-IP to CloudWatch” for “Request name” and click Save to “Telemetry Streaming Collection”</li>
+</ol>
+<img alt="../../_images/re.png" src="../../_images/re.png" />
+<ol class="arabic simple" start="7">
+<li>Expand the Telemetry Streaming Collection and click the “BIG-IP to CloudWatch” request</li>
+</ol>
+<img alt="../../_images/ts_collection.png" src="../../_images/ts_collection.png" />
+<ol class="arabic simple" start="8">
+<li>lick “GET”, which is the default method, and select “POST” from the dropdown</li>
+</ol>
+<img alt="../../_images/get.png" src="../../_images/get.png" />
+<p>9. In the “Enter request URL” bar enter:
+<a class="reference external" href="https://10.1.1.7/mgmt/shared/telemetry/declare">https://10.1.1.7/mgmt/shared/telemetry/declare</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We’ll see the BIG-IP in a future section. Also API is being exposed because we alredy uploaded the RPM package.</p>
+</div>
+<img alt="../../_images/url.png" src="../../_images/url.png" />
+<p>11. Open the “Authorization” tab in the menu bar.
+Under the “Type” dropdown, click “Basic Auth”
+Enter in Username as “admin” and Password as “admin”</p>
+<img alt="../../_images/ts_collection.png" src="../../_images/ts_collection.png" />
+<p>12. Open the “Body” tab in the menu bar
+Select the “raw” radial button
+In the “Text” dropdown select “JSON (application/json)”</p>
+<img alt="../../_images/Picture3.png" src="../../_images/Picture3.png" />
+<p>Copy and paste the following into the body of the declaration:</p>
+<ol class="arabic simple" start="13">
+<li></li>
+</ol>
+<div class="highlight-HTTPS notranslate"><div class="highlight"><pre><span></span>POST: https://10.1.1.7/mgmt/shared/telemetry/declare
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Telemetry&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;My_System&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Telemetry_System&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;systemPoller&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="mi">60</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;My_Listener&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Telemetry_Listener&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">6514</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;My_Consumer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Telemetry_Consumer&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS_CloudWatch&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt; region of BIG-IP &gt;&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;logGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt; Log Group &gt;&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;logStream&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt; Log Stream &gt;&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt; AWS Access Key &gt;&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;passphrase&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;cipherText&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt; AWS Secret Key &gt;&gt;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>14. Create a new request named – BIG-IP-AWS-check info
+Auth - basic auth, admin admin</p>
+<div class="highlight-HTTPS notranslate"><div class="highlight"><pre><span></span>GET: https://10.1.1.7/mgmt/shared/telemetry/info
+</pre></div>
+</div>
+<p>15. Create a new request named –BIG-IP-AWS-Check if TS Avail
+Auth - basic auth, admin admin</p>
+<div class="highlight-HTTPS notranslate"><div class="highlight"><pre><span></span>GET: https://10.1.1.7/mgmt/shared/telemetry/declare
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-traffic-on-big-ip">
+<h1>4.5. Generate Traffic on BIG-IP<a class="headerlink" href="#generate-traffic-on-big-ip" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>In the RDP session, open Chrome</li>
+</ol>
+<img alt="../../_images/chrome.png" src="../../_images/chrome.png" />
+<ol class="arabic simple" start="2">
+<li>Click on the “BIG-IP (10.1.1.7)” bookmark</li>
+</ol>
+<img alt="../../_images/bookmark.png" src="../../_images/bookmark.png" />
+<ol class="arabic simple" start="3">
+<li>Login to the BIG-IP with the username “admin” and the password “admin”</li>
+<li>In the Common partition navigate to Local Traffic -&gt; Network Map</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The virtual server, Existing_VS, along with its pool, existing_pool, have been preconfigured for this lab to produce traffic for Telemetry Streaming.</p>
+</div>
+<img alt="../../_images/network.png" src="../../_images/network.png" />
+<ol class="arabic simple" start="5">
+<li>Generate traffic by opening a new tab and navigating to the virtual server IP address and port combination “10.1.20.29:8080”</li>
+<li>Reload the page 5+ times</li>
+</ol>
+<img alt="../../_images/company.png" src="../../_images/company.png" />
+</div>
+<div class="section" id="view-logs-in-aws-cloudwatch">
+<h1>4.6. View Logs in AWS CloudWatch<a class="headerlink" href="#view-logs-in-aws-cloudwatch" title="Permalink to this headline">¶</a></h1>
+<p>1. In your local browser, navigate to <a class="reference external" href="https://federate.f5.com">https://federate.f5.com</a>
+<em>find photo above</em>
+2. Click on the “AWS Console” tile
+<em>find photo above</em>
+3. Open “Services” dropdown in the top menu bar
+<em>find photo above</em>
+4. Under “Management &amp; Governance”, click on “Cloudwatch”
+<em>find photo above</em></p>
+<p>5. Click “Logs” in the left menu bar
+<em>find photo above</em>
+6. Select “my_log_group” (or the log group you’ve created) under Log Groups
+<em>find photo above</em>
+7. Select “test_log_stream” (or the log stream you’ve created) under Log Streams
+<em>find photo above</em></p>
+</div>
+
+
+
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="../class5.html" title="4. Telemetry Streaming" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../../_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  <script src="../../_static/js/clouddocs.js"></script>
+  </body>
+</html>

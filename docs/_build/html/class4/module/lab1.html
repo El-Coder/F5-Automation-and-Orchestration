@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<head>
+  
+  <!--STAGING:-->
+  <script src="https://assets.adobedtm.com/50164577268f481934e5d57dbfb78f929164cd0d/satelliteLib-ea775cfabef5fca8b04e9392f20c986c0724a7c3-staging.js"></script>
+  <!--Production:-->
+  <script src="https://assets.adobedtm.com/50164577268f481934e5d57dbfb78f929164cd0d/satelliteLib-ea775cfabef5fca8b04e9392f20c986c0724a7c3.js"></script>
+    <title>3.1.1. Deploy UDF</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="kb_doc_type" content="Manual"/>
+  <meta name="kb_doc_type" content="User Guide"/>
+  <meta name="title" content="3.1.1. Deploy UDF"/>
+  <meta name="product" content="F5-Automation-and-Orchestration"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="None"/>
+  <meta name="archived" content="Archived documents excluded"/>
+
+  
+  
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text"> jQuery.noConflict(true)</script>
+
+</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3.1.1. Deploy UDF &#8212; F5-Automation-and-Orchestration  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5_agility_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.2. Using AS3 with Big-IQ" href="../module2/module2.html" />
+    <link rel="prev" title="3.1. AS3 – Getting Started" href="module.html" />
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="dismiss">
+      <button type="button" class="btn btn-info navbar-btn site-hidden"><i class="fa fa-align-justify"></i></button>
+    </div>
+    <div id="sidebar" class="section-nav">
+      <nav class="nav-sidebartoc">
+        <h5>F5-Automation-and-Orchestration  documentation </h5>
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <h5>Current Page</h5>
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">3.1.1. Deploy UDF</a></li>
+<li><a class="reference internal" href="#open-browser-in-rdp">3.1.2. Open Browser in RDP</a></li>
+<li><a class="reference internal" href="#open-postman-and-create-partition">3.1.3. Open Postman and Create Partition</a></li>
+<li><a class="reference internal" href="#clear-partition">3.1.4. Clear Partition</a></li>
+</ul>
+
+         </span>
+        <hr>
+        <h5>Site Contents</h5>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">1. Environments &amp; Lab Topology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">2. Declarative Onboarding</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class4.html">3. Application Services 3 Extension (AS3)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="module.html">3.1. AS3 – Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2/module2.html">3.2. Using AS3 with Big-IQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">4. Telemetry Streaming</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+  
+  <div class="main active" id="content">
+    <article class="docs-container site-article-inner">
+            <nav class="site-breadcrumb-nav site-nav">
+          <ul class="site-breadcrumb-list">
+            <li class="breadcrumb-item"><button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn site-hidden"><i class="fa fa-align-justify"></i></button>&#x20 <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">F5-Automation-and-Orchestration </a> &gt; 3.1.1. Deploy UDF</li>
+          </ul>
+      </nav>
+      
+      
+
+    
+  <div class="section" id="deploy-udf">
+<h1>3.1.1. Deploy UDF<a class="headerlink" href="#deploy-udf" title="Permalink to this headline">¶</a></h1>
+<img alt="../../_images/udf.png" src="../../_images/udf.png" />
+<ol class="arabic simple">
+<li>Navigate to <a class="reference external" href="https://udf.f5.com">https://udf.f5.com</a></li>
+<li>Open “Blueprints” in the left menu bar</li>
+<li>In the search bar enter, “A&amp;O Toolchain Demo”</li>
+<li>Click the green “Deploy” button</li>
+<li>Open “Deployments” in the left menu bar</li>
+<li>In the “A&amp;O Toolchain Demo” tile, click “Start”</li>
+<li>In the “A&amp;O Toolchain Demo” tile, click “Details”</li>
+<li>Open “Components” in the menu bar</li>
+<li>Wait until all components have started</li>
+<li>Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”</li>
+</ol>
+<img alt="../../_images/rdp.png" src="../../_images/rdp.png" />
+</div>
+<div class="section" id="open-browser-in-rdp">
+<h1>3.1.2. Open Browser in RDP<a class="headerlink" href="#open-browser-in-rdp" title="Permalink to this headline">¶</a></h1>
+<img alt="../../_images/chrome.png" src="../../_images/chrome.png" />
+<ol class="arabic simple">
+<li>Open Chrome</li>
+<li>Search “<a class="reference external" href="https://10.1.1.7/">https://10.1.1.7/</a>”</li>
+<li>Login into BIG-IP Credentials: admin - admin</li>
+</ol>
+<img alt="../../_images/noapp.png" src="../../_images/noapp.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">No application is already on BIG-IP</p>
+</div>
+</div>
+<div class="section" id="open-postman-and-create-partition">
+<h1>3.1.3. Open Postman and Create Partition<a class="headerlink" href="#open-postman-and-create-partition" title="Permalink to this headline">¶</a></h1>
+<img alt="../../_images/desktop.png" src="../../_images/desktop.png" />
+<img alt="../../_images/post.png" src="../../_images/post.png" />
+<ol class="arabic simple">
+<li>Using Postman we will first check the verison of AS3 the BIG-IP has by using a <strong>GET</strong> command to the following URI</li>
+</ol>
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://&lt;BIG-IP&gt;/mgmt/shared/appsvcs/info
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Using Postman we will modify BIG-IP by using <strong>POST</strong> commands to the following URI</li>
+</ol>
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://&lt;BIG-IP&gt;/mgmt/shared/appsvcs/declare
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>    <span class="p">{</span>
+    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;persist&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.0.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;controls&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;trace&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+
+        <span class="nt">&quot;new_partition&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span><span class="p">,</span>
+
+            <span class="nt">&quot;Application_1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Application&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;generic&quot;</span><span class="p">,</span>
+
+                <span class="nt">&quot;Virtual_Server&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Service_Generic&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;virtualPort&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+                    <span class="nt">&quot;virtualAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;10.1.20.9&quot;</span>
+                    <span class="p">],</span>
+                    <span class="nt">&quot;pool&quot;</span><span class="p">:</span> <span class="s2">&quot;http_pool&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;profileHTTP&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;use&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">}</span>
+                <span class="p">},</span>
+
+                <span class="nt">&quot;http_pool&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Pool&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;monitors&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;http&quot;</span>
+                    <span class="p">],</span>
+                    <span class="nt">&quot;members&quot;</span><span class="p">:[</span>
+                        <span class="p">{</span>
+                            <span class="nt">&quot;servicePort&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+                            <span class="nt">&quot;serverAddresses&quot;</span><span class="p">:</span>
+                            <span class="p">[</span>
+                                <span class="s2">&quot;10.1.10.5&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+
+                <span class="nt">&quot;http&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="s2">&quot;HTTP_Profile&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Open Browser and check now BIG-IP has application</li>
+</ol>
+<img alt="../../_images/app.png" src="../../_images/app.png" />
+</div>
+<div class="section" id="clear-partition">
+<h1>3.1.4. Clear Partition<a class="headerlink" href="#clear-partition" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Now we will delete the application using the <strong>POST</strong> command again to the following URI</li>
+</ol>
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://&lt;BIG-IP&gt;/mgmt/shared/appsvcs/declare
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span>
+   <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.8.0&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;new_partition&quot;</span><span class="p">:</span> <span class="p">{</span>
+           <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Open Browser and check that BIG-IP has no application</li>
+</ol>
+<img alt="../../_images/noas3.png" src="../../_images/noas3.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the end of the lab</p>
+</div>
+</div>
+
+
+
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module.html" title="3.1. AS3 – Getting Started" accesskey="p" class="btn btn-primary pull-left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../module2/module2.html" title="3.2. Using AS3 with Big-IQ" accesskey="n" class="btn btn-primary pull-right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../../_static/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    jQuery.noConflict(true)
+  </script>
+  <script src="../../_static/js/clouddocs.js"></script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+Declarative Onboarding – Getting Started
+-----------------------------------
+Things that you need to get started:
+
+Apps
+Postman
+Putty
+Chrome - BigIP
+
+Files
+Eval Key – “F5-BIG-VE-BT-1G-V16-LIC”
+-	Note that this is not a dev key RPM files
+-	https://github.com/F5Networks/f5-declarative-onboarding/blob/master/dist/f5-declarative-onboarding-1.3.0-4.noarch.rpm
+-	https://github.com/F5Networks/f5-appsvcs-extension/tree/master/dist/latest
+
+
+
+Things that you need to get started:
+iApps: Package Management LX Extension
+-	Root access via UDF bigip (root/default)
+-	“touch /var/config/rest/iapps/enable”
+Turn SSL Cert off in Postman
+-	File  Settings  SSL certification verification (toggled off)
+
+
+
+Preconfigured
+
+1.	Postman
+2.	Putty
+3.	Chrome – BigIP
+
+
+Phase One: Login to Environment
+~~~~~~~~
+1.	Navigate to udf.f5.com
+2.	Click ‘Blueprint’
+3.	Enter ‘A&O ASE Demo’ into search bar
+4.	Click ‘Start’
+5.	Navigate to ‘Details’  ‘Components’
+6.	Under ‘win2016’ click ‘Access’ dropdown  ‘RDP’
+
+*	Find login information under ‘Details’  ‘Credentials’
+*	Login to win2016 RDP with the provided credentials
+
+7.	Now win2016 RDP is up and running
+
+Phase Two: Download Declarative Onboarding and Application Services 3 Extensions
+~~~~~~~~
+1.	Open win2016 RDP
+2.	Open Chrome
+3.	Navigate to: https://github.com/F5Networks/f5-declarative-onboarding/blob/master/dist/ 
+
+*	This is an extension for Declarative Onboarding
+*	Download the RPM file
+
+4.	Navigate to: https://github.com/F5Networks/f5-appsvcs-extension/tree/master/dist/latest
+
+*	This is an extension for Application Services 3 Extension
+*	Download the RPM file
+
+Phase Three: Enable the BIG-IP to Accept the Extensions || Enable iControl LX Extensions
+~~~~~~~~
+1.	In your local browser, navigate to udf.f5.com
+2.	Click ‘Deployments’
+3.	Click ‘Details’  ‘A&O ASE Demo’  ‘Components’
+4.	Under ‘F5 Products’ tab, click ‘Access’ dropdown  ‘Web Shell’
+5.	Note that you are Root in BIG-IP
+
+*	Enter command: “touch /var/config/rest/iapps/enable”
+*	Examine that iControl LX Extension has been installed on the BIG-IP GUI
+
+6.	Open win2016 RDP 
+7.	Open Chrome
+8.	Navigate to BIG-IP bookmark
+
+*	Login with admin / admin credentials
+
+9.	In BIG-IP GUI
+
+*	Click on iApps  iControl LX
+*	Click upload
+*	Upload both the Declarative Onboarding and Application Services 3 Extension
+
+Phase Four: Postman
+~~~~~~~~
+1.	Open win2016 RDP
+2.	Open the Postman application
+3.	In the top left, click Import
+
+*	Click “Import from link” – will set up a link for collection and environment
+
+4.	In Preferences, toggle the SSL Certificate Verification off
+
+
+.. image:: _static/image001.png
+
+
+.. code-block:: JSON
+
+    {
+        "schemaVersion": "1.0.0",
+        "class": "Device",
+        "async": true,
+        
+        "Common": {
+            "class": "Tenant",
+            "hostname": "<hostname-of-bigip>",
+            "myLicense": {
+                "class": "License",
+                "licenseType": "regKey",
+                "overwrite": "true",
+                "regKey": "<Reg-Key>"
+            }
+            
+            "myDns": {
+                "class": "DNS",
+                "nameServers": [
+                    "8.8.8.8"
+                ],
+                "search": [
+                    "f5.com"
+                ]
+            },
+            
+            "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "0.pool.ntp.org",
+                    "1.pool.ntp.org"
+                ],
+                "timezone": "UTC"
+            },
+            
+            "internal": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.1",
+                        "tagged": false
+                    }
+                ]
+            },
+            
+            "internal-self": {
+                "class": "SelfIp",
+                "address": "10.1.10.10/24",
+                "vlan": "internal",
+                "allowService": "default",
+                "trafficGroup": "traffic-group-local-only"
+            },
+            
+            "external": {
+                "class": "VLAN",
+                "interfaces": [
+                    {
+                        "name": "1.2",
+                        "tagged": false
+                    }
+                ]
+            },
+            
+            "external-self": {
+                "class": "SelfIp",
+                "address": "10.1.20.10/24",
+                "vlan": "external",
+                "allowService": "none",
+                "trafficGroup": "traffic-group-local-only"
+            },
+            
+            "external_default_gateway": {
+                "class": "Route",
+                "gw": "10.1.10.1",
+                "network": "default",
+                "mtu": 1500
+            }
+            
+        }
+    }

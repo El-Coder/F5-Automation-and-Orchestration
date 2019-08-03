@@ -1,0 +1,6 @@
+Lab Topology & Environments
+===================
+
+Network Map
+-------
+.. image:: /_static/network_map.png

@@ -1,0 +1,61 @@
+Telemetry Streaming – Getting Started
+-----------------------------------
+
+This section of the demo is for the integration of Telemetry Streaming. The goal is to facilitate an automated configuration of Telemetry Streaming with a Big-IP and connect the log stream to AWS CloudWatch. 
+
+
+While there are many methods to consume Telemetry Streaming data, this demo uses AWS CloudWatch IAM users. We will collect data from the application hosted at 10.1.20.9 on Big-IP 10.1.1.7.
+
+IAM user access key and secret key in UDF Documentation.
+
+
+We will use
+
+BIG-IQ: 
+IP: 10.1.1.8
+Username: admin
+Password: admin
+
+BIG-IP:
+IP: 10.1.1.7
+Username: admin
+Password: admin
+
+Postman:
+
+Demo Guide
+1)	Upload iapps
+2)	Do
+3)	As3
+
+Before Starting: Revoke License
+Web Shell 
+-	Tmsh
+-	Revoke sys license
+
+.. code-block:: JSON
+
+    {
+        "class": "Telemetry",
+        "My_System": {
+            "class": "Telemetry_System",
+            "systemPoller": {
+                "interval": 60
+            }
+        },
+        "My_Listener": {
+            "class": "Telemetry_Listener",
+            "port": 6514
+        },
+        "My_Consumer": {
+            "class": "Telemetry_Consumer",
+            "type": "AWS_CloudWatch",
+            "region": "us-west-2",
+            "logGroup": "AO_Log_Group",
+            "logStream": "AO_Log_Stream",
+            "username": "<iam-access>",
+            "passphrase": {
+                "cipherText": "<iam-secret>"
+            }
+        }
+    }
