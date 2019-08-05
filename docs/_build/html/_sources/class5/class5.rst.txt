@@ -21,8 +21,6 @@ In your local browser, navigate to https://federate.f5.com
 
 .. image:: /_static/service_now.png
 
-.. image:: /_static/Picture1.png
-
 - Click on “Submit Ticket”
 
 .. image:: /_static/submit.png

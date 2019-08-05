@@ -249,8 +249,6 @@ Generate Traffic on BIG-IP
 
 .. NOTE:: The virtual server, Existing_VS, along with its pool, existing_pool, have been preconfigured for this lab to produce traffic for Telemetry Streaming.
 
-..edit this image
-
 .. image:: /_static/vs.png
 
 5. Generate traffic by opening a new tab and navigating to the virtual server IP address and port combination “10.1.20.29:8080”
