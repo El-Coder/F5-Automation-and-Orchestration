@@ -34,7 +34,7 @@ Once you are approved for access to AWS environment you can interact with it thr
     * - Windows Jumphost
       - 10.1.1.5
       - External: 10.1.20.5
-      - user/user
+      - Administrator/YLwbzexeWL9AT
     * - BIG-IP - AS3 & TS
       - 10.1.1.7
       - Internal: 10.1.10.10

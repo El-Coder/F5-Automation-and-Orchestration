@@ -238,7 +238,7 @@ Wait until all components have started.</p>
 <ol class="arabic simple" start="9">
 <li>Once in the win2016 component navigate to the “Details” tab and find the credentials for the RDP session highlighted below</li>
 </ol>
-<img alt="_static/components.png" src="_static/components.png" />
+<img alt="../../_images/component.png" src="../../_images/component.png" />
 <p>Enter the credentials for the RDP session to begin your session</p>
 </div>
 <div class="section" id="configure-postman">
@@ -252,7 +252,7 @@ Wait until all components have started.</p>
 </ol>
 <img alt="../../_images/skip.png" src="../../_images/skip.png" />
 <ol class="arabic simple" start="3">
-<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating File  Settings  under the General tab, toggle SSL certification verification</li>
+<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification</li>
 </ol>
 <img alt="../../_images/settings.png" src="../../_images/settings.png" />
 <img alt="../../_images/ssl.png" src="../../_images/ssl.png" />
@@ -273,7 +273,7 @@ Wait until all components have started.</p>
 </ol>
 <img alt="../../_images/ts_collection.png" src="../../_images/ts_collection.png" />
 <ol class="arabic simple" start="8">
-<li>lick “GET”, which is the default method, and select “POST” from the dropdown</li>
+<li>Click “GET”, which is the default method, and select “POST” from the dropdown</li>
 </ol>
 <img alt="../../_images/get.png" src="../../_images/get.png" />
 <p>9. In the “Enter request URL” bar enter:
@@ -283,17 +283,16 @@ Wait until all components have started.</p>
 <p class="last">We’ll see the BIG-IP in a future section. Also API is being exposed because we alredy uploaded the RPM package.</p>
 </div>
 <img alt="../../_images/url.png" src="../../_images/url.png" />
-<p>11. Open the “Authorization” tab in the menu bar.
+<p>10. Open the “Authorization” tab in the menu bar.
 Under the “Type” dropdown, click “Basic Auth”
 Enter in Username as “admin” and Password as “admin”</p>
 <img alt="../../_images/ts_collection.png" src="../../_images/ts_collection.png" />
-<p>12. Open the “Body” tab in the menu bar
+<p>11. Open the “Body” tab in the menu bar
 Select the “raw” radial button
 In the “Text” dropdown select “JSON (application/json)”</p>
-<img alt="../../_images/Picture3.png" src="../../_images/Picture3.png" />
-<p>Copy and paste the following into the body of the declaration:</p>
-<ol class="arabic simple" start="13">
-<li></li>
+<img alt="../../_images/json.png" src="../../_images/json.png" />
+<ol class="arabic simple" start="12">
+<li>Copy and paste the following into the body of the declaration:</li>
 </ol>
 <div class="highlight-HTTPS notranslate"><div class="highlight"><pre><span></span>POST: https://10.1.1.7/mgmt/shared/telemetry/declare
 </pre></div>
@@ -324,12 +323,12 @@ In the “Text” dropdown select “JSON (application/json)”</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>14. Create a new request named – BIG-IP-AWS-check info
+<p>13. Create a new request named – BIG-IP-AWS-check info
 Auth - basic auth, admin admin</p>
 <div class="highlight-HTTPS notranslate"><div class="highlight"><pre><span></span>GET: https://10.1.1.7/mgmt/shared/telemetry/info
 </pre></div>
 </div>
-<p>15. Create a new request named –BIG-IP-AWS-Check if TS Avail
+<p>14. Create a new request named –BIG-IP-AWS-Check if TS Avail
 Auth - basic auth, admin admin</p>
 <div class="highlight-HTTPS notranslate"><div class="highlight"><pre><span></span>GET: https://10.1.1.7/mgmt/shared/telemetry/declare
 </pre></div>
@@ -344,7 +343,7 @@ Auth - basic auth, admin admin</p>
 <ol class="arabic simple" start="2">
 <li>Click on the “BIG-IP (10.1.1.7)” bookmark</li>
 </ol>
-<img alt="../../_images/bookmark.png" src="../../_images/bookmark.png" />
+<img alt="../../_images/search.png" src="../../_images/search.png" />
 <ol class="arabic simple" start="3">
 <li>Login to the BIG-IP with the username “admin” and the password “admin”</li>
 <li>In the Common partition navigate to Local Traffic -&gt; Network Map</li>
@@ -353,7 +352,8 @@ Auth - basic auth, admin admin</p>
 <p class="first admonition-title">Note</p>
 <p class="last">The virtual server, Existing_VS, along with its pool, existing_pool, have been preconfigured for this lab to produce traffic for Telemetry Streaming.</p>
 </div>
-<img alt="../../_images/network.png" src="../../_images/network.png" />
+<p>..edit this image</p>
+<img alt="../../_images/vs.png" src="../../_images/vs.png" />
 <ol class="arabic simple" start="5">
 <li>Generate traffic by opening a new tab and navigating to the virtual server IP address and port combination “10.1.20.29:8080”</li>
 <li>Reload the page 5+ times</li>
@@ -362,20 +362,67 @@ Auth - basic auth, admin admin</p>
 </div>
 <div class="section" id="view-logs-in-aws-cloudwatch">
 <h1>4.6. View Logs in AWS CloudWatch<a class="headerlink" href="#view-logs-in-aws-cloudwatch" title="Permalink to this headline">¶</a></h1>
-<p>1. In your local browser, navigate to <a class="reference external" href="https://federate.f5.com">https://federate.f5.com</a>
-<em>find photo above</em>
-2. Click on the “AWS Console” tile
-<em>find photo above</em>
-3. Open “Services” dropdown in the top menu bar
-<em>find photo above</em>
-4. Under “Management &amp; Governance”, click on “Cloudwatch”
-<em>find photo above</em></p>
-<p>5. Click “Logs” in the left menu bar
-<em>find photo above</em>
-6. Select “my_log_group” (or the log group you’ve created) under Log Groups
-<em>find photo above</em>
-7. Select “test_log_stream” (or the log stream you’ve created) under Log Streams
-<em>find photo above</em></p>
+<ol class="arabic simple">
+<li>Login to AWS console from <a class="reference external" href="https://federate.f5.com">https://federate.f5.com</a></li>
+</ol>
+<img alt="../../_images/federate.png" src="../../_images/federate.png" />
+<ol class="arabic simple" start="2">
+<li>Click on services.</li>
+</ol>
+<img alt="../../_images/image01.png" src="../../_images/image01.png" />
+<ol class="arabic simple" start="3">
+<li>Click on cloudwatch.</li>
+</ol>
+<img alt="../../_images/image02.png" src="../../_images/image02.png" />
+<ol class="arabic simple" start="4">
+<li>Click on dashboard.</li>
+</ol>
+<img alt="../../_images/image003.png" src="../../_images/image003.png" />
+<ol class="arabic simple" start="5">
+<li>Click on create dashboard.</li>
+</ol>
+<img alt="../../_images/image004.png" src="../../_images/image004.png" />
+<ol class="arabic simple" start="6">
+<li>Give your dashboard a name and click create button.</li>
+</ol>
+<img alt="../../_images/image005.png" src="../../_images/image005.png" />
+<ol class="arabic simple" start="7">
+<li>Select query results and click add to dashboard.</li>
+</ol>
+<img alt="../../_images/image006.png" src="../../_images/image006.png" />
+<ol class="arabic simple" start="8">
+<li>You can see the dashboard is created.</li>
+</ol>
+<img alt="../../_images/image007.png" src="../../_images/image007.png" />
+<ol class="arabic simple" start="9">
+<li>Go back to cloudwatch menu and click on insight under Logs.</li>
+</ol>
+<img alt="../../_images/image008.png" src="../../_images/image008.png" />
+<ol class="arabic simple" start="10">
+<li>Select your log group in the top for results, select your duration (ex. 1 day) and run query to get results from logs.</li>
+</ol>
+<img alt="../../_images/image009.png" src="../../_images/image009.png" />
+<ol class="arabic simple" start="11">
+<li>Click on the actions tab and add the current results from logs to dashboard we created.</li>
+</ol>
+<img alt="../../_images/image010.png" src="../../_images/image010.png" />
+<img alt="../../_images/image011.png" src="../../_images/image011.png" />
+<ol class="arabic simple" start="12">
+<li>Select dashboard name, query results tab and add to dashboard.</li>
+</ol>
+<img alt="../../_images/image012.png" src="../../_images/image012.png" />
+<ol class="arabic simple" start="13">
+<li>Go back to dashboard in cloudwatch and select your dashboard name.</li>
+</ol>
+<img alt="../../_images/image013.png" src="../../_images/image013.png" />
+<ol class="arabic simple" start="14">
+<li>Click on any log from list to inspect the entries.</li>
+</ol>
+<img alt="../../_images/image014.png" src="../../_images/image014.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the end of the module</p>
+</div>
 </div>
 
 

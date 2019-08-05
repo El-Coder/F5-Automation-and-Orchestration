@@ -125,7 +125,7 @@ Wait until all components have started.
 
 9. Once in the win2016 component navigate to the “Details” tab and find the credentials for the RDP session highlighted below
 
-.. image:: /_static/components.png
+.. image:: /_static/component.png
 
 Enter the credentials for the RDP session to begin your session
 
@@ -141,7 +141,7 @@ Configure Postman
 
 .. image:: /_static/skip.png
 
-3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating File  Settings  under the General tab, toggle SSL certification verification
+3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification
 
 .. image:: /_static/settings.png
 
@@ -163,7 +163,7 @@ Configure Postman
 
 .. image:: /_static/ts_collection.png
 
-8. lick “GET”, which is the default method, and select “POST” from the dropdown
+8. Click “GET”, which is the default method, and select “POST” from the dropdown
 
 .. image:: /_static/get.png
 
@@ -174,21 +174,19 @@ https://10.1.1.7/mgmt/shared/telemetry/declare
 
 .. image:: /_static/url.png
 
-11. Open the “Authorization” tab in the menu bar.
+10. Open the “Authorization” tab in the menu bar.
 Under the “Type” dropdown, click “Basic Auth”
 Enter in Username as “admin” and Password as “admin”
 
 .. image:: /_static/ts_collection.png
 
-12. Open the “Body” tab in the menu bar
+11. Open the “Body” tab in the menu bar
 Select the “raw” radial button
 In the “Text” dropdown select “JSON (application/json)”
 
-.. image:: /_static/Picture3.png
+.. image:: /_static/json.png
 
-Copy and paste the following into the body of the declaration:
-
-13.
+12. Copy and paste the following into the body of the declaration:
 
 .. code-block:: HTTPS
 
@@ -221,14 +219,14 @@ Copy and paste the following into the body of the declaration:
         }
     }
 
-14. Create a new request named – BIG-IP-AWS-check info
+13. Create a new request named – BIG-IP-AWS-check info
 Auth - basic auth, admin admin
 
 .. code-block:: HTTPS
 
  GET: https://10.1.1.7/mgmt/shared/telemetry/info
 
-15. Create a new request named –BIG-IP-AWS-Check if TS Avail
+14. Create a new request named –BIG-IP-AWS-Check if TS Avail
 Auth - basic auth, admin admin
 
 .. code-block:: HTTPS
@@ -243,7 +241,7 @@ Generate Traffic on BIG-IP
 
 2. Click on the “BIG-IP (10.1.1.7)” bookmark
 
-.. image:: /_static/bookmark.png
+.. image:: /_static/search.png
 
 3. Login to the BIG-IP with the username “admin” and the password “admin”
 
@@ -251,7 +249,9 @@ Generate Traffic on BIG-IP
 
 .. NOTE:: The virtual server, Existing_VS, along with its pool, existing_pool, have been preconfigured for this lab to produce traffic for Telemetry Streaming.
 
-.. image:: /_static/network.png
+..edit this image
+
+.. image:: /_static/vs.png
 
 5. Generate traffic by opening a new tab and navigating to the virtual server IP address and port combination “10.1.20.29:8080”
 
@@ -259,22 +259,66 @@ Generate Traffic on BIG-IP
 
 .. image:: /_static/company.png
 
-View Logs in AWS CloudWatch
--------------------------------
 
-1. In your local browser, navigate to https://federate.f5.com 
-*find photo above*
-2. Click on the “AWS Console” tile
-*find photo above*
-3. Open “Services” dropdown in the top menu bar
-*find photo above*
-4. Under “Management & Governance”, click on “Cloudwatch”
-*find photo above*
+View Logs in AWS CloudWatch 
+---------------------------
 
-5. Click “Logs” in the left menu bar
-*find photo above*
-6. Select “my_log_group” (or the log group you’ve created) under Log Groups
-*find photo above*
-7. Select “test_log_stream” (or the log stream you’ve created) under Log Streams
-*find photo above*
+1. Login to AWS console from https://federate.f5.com 
 
+.. image:: /_static/federate.png
+
+2. Click on services.
+
+.. image:: /_static/image01.png
+
+3. Click on cloudwatch.
+
+.. image:: /_static/image02.png
+
+4. Click on dashboard.
+
+.. image:: /_static/image003.png
+
+5. Click on create dashboard.
+
+.. image:: /_static/image004.png
+
+6. Give your dashboard a name and click create button.
+
+.. image:: /_static/image005.png
+
+7. Select query results and click add to dashboard.
+
+.. image:: /_static/image006.png
+
+8. You can see the dashboard is created.
+
+.. image:: /_static/image007.png
+
+9. Go back to cloudwatch menu and click on insight under Logs.
+
+.. image:: /_static/image008.png
+
+10. Select your log group in the top for results, select your duration (ex. 1 day) and run query to get results from logs.
+
+.. image:: /_static/image009.png
+
+11. Click on the actions tab and add the current results from logs to dashboard we created.
+
+.. image:: /_static/image010.png
+
+.. image:: /_static/image011.png
+
+12. Select dashboard name, query results tab and add to dashboard.
+
+.. image:: /_static/image012.png
+
+13. Go back to dashboard in cloudwatch and select your dashboard name.
+
+.. image:: /_static/image013.png
+
+14. Click on any log from list to inspect the entries.
+
+.. image:: /_static/image014.png
+
+.. NOTE:: This is the end of the module
