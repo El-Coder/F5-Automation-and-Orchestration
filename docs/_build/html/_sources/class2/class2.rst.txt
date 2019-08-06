@@ -39,20 +39,24 @@ Once you are approved for access to AWS environment you can interact with it thr
       - 10.1.1.7
       - Internal: 10.1.10.10
         External: 10.1.20.10
-      - admin/qweasdzxc123@
+      - admin/admin
     * - BIG-IP - Test Traffic Pool
       - 10.1.1.9
       - Internal: 10.1.10.20
         External: 10.1.20.11
-      - admin/qweasdzxc123@
+      - admin/GoodBaklava123!@#
     * - BIG-IP - DO
       - 10.1.1.4
       - Internal: 10.1.10.14
         External: 10.1.20.24
-      - admin/qweasdzxc123@
+      - admin/GoodBaklava123!@#
     * - BIG-IQ 
       - 10.1.1.8
       - External: 10.1.20.200
-      - admin/qweasdzxc123@
+      - admin/ Admin123@
+    * - BIG-IQ - DCD
+      - 10.1.1.10
+      - External: 10.1.20.199
+      - admin/Admin123@
 
 
