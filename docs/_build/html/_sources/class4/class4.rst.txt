@@ -6,6 +6,8 @@ This section of the demo is for the integration of Application Services 3 Extens
 **Assumptions**
 This lab guide assumes you know how to use postman if not follow this tutorial https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html
 
+.. IMPORTANT:: AS3 is version agnostic and can simplify upgrades from one BIG-IP to another version.
+
 
 Expected time to complete: **1 hour**
 
