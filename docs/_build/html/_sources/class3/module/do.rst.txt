@@ -35,8 +35,8 @@ Open Browser in RDP
 .. image:: /_static/chrome.png
 
 1. Open Chrome
-2. Search “https://10.1.1.7/”
-3. Login Credentials: admin - admin
+2. Search “https://10.1.1.4/”
+3. Login Credentials: admin - GoodBaklava123!@#
 4. Check BIG-IP is blank 
 
 Postman App
@@ -52,31 +52,31 @@ Postman App
 .. NOTE::
    In DO you can only **POST** and **GET**. Can’t **PATCH** You will overwrite things
 
-5. First we will check the version of DO with the **GET** command to the URI
+5. First we will check the version of DO with the **GET** command to the URI.
 
 .. image:: /_static/post.png
 
 .. code-block:: TMSH
 
- https://<BIG-IP>/mgmt/shared/declarative-onboarding/info
+ https://10.1.1.4/mgmt/shared/declarative-onboarding/info
 
 6. Now we will check to see the iControl LX extensions install on the BIG-IP with the **GET** command to the URI.
 
 .. code-block:: TMSH
 
- https://10.1.1.7/mgmt/shared/iapp/installed-packages
+ https://10.1.1.4/mgmt/shared/iapp/installed-packages
 
 7. Now we will check to see the current config on the BIG-IP with the **GET** command to the URI.
 
 .. code-block:: TMSH
 
- https://10.1.1.7/mgmt/shared/declarative-onboarding?show=full
+ https://10.1.1.4/mgmt/shared/declarative-onboarding?show=full
 
-8. Now we will onboard a big a BIG-IP by using **POST** to the URI 
+8. Now we will onboard a big a BIG-IP by using **POST** to the URI.
 
 .. code-block:: TMSH
 
- https://<BIG-IP>/mgmt/shared/declarative-onboarding
+ https://10.1.1.4//mgmt/shared/declarative-onboarding
 
 with the following declaration:
 
@@ -162,11 +162,31 @@ with the following declaration:
 
  https://10.1.1.4/mgmt/shared/declarative-onboarding/task/
 
-Open Browser in RDP
-~~~~~~~~~~~~~~~~~~~ 
-1. Check BIG-IP is activated 
+You should get a 200 OK from Postman
 
-.. image:: /_static/activated.png
+Verify Changes
+~~~~~~~~~~~~~~ 
+
+1. To see changes for DNS go to configuration utility, click the Configuration tab then under the Device tab click DNS.  
+
+.. image:: /_static/dns.png
+
+2. To see changes for NTP go to configuration utility, click the Configuration tab then under the Device tab click NTP.  
+
+.. image:: /_static/ntp.png
+
+3. To see changes for the internal and external VLANs go to configuration utility, click the Network tab then under the VLANs tab click VLAN list.  
+
+.. image:: /_static/vlan.png
+
+4. To see changes for the internal-self and external-self VLANs go to configuration utility, click the Network tab then click the Self IPs tab.  
+
+.. image:: /_static/selfip.png
+
+5. To see changes for external_default_gateway go to configuration utility, click the Network tab then click the Routes tab.  
+
+.. image:: /_static/external_gw.png
+
 
 .. IMPORTANT::
    Don't revoke license 

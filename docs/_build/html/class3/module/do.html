@@ -79,7 +79,7 @@
 <li><a class="reference internal" href="#deploy-udf">2.1.1. Deploy UDF</a></li>
 <li><a class="reference internal" href="#open-browser-in-rdp">2.1.2. Open Browser in RDP</a></li>
 <li><a class="reference internal" href="#postman-app">2.1.3. Postman App</a></li>
-<li><a class="reference internal" href="#id1">2.1.4. Open Browser in RDP</a></li>
+<li><a class="reference internal" href="#verify-changes">2.1.4. Verify Changes</a></li>
 </ul>
 </li>
 </ul>
@@ -148,8 +148,8 @@ To manually install follow <a class="reference external" href="https://clouddocs
 <img alt="../../_images/chrome.png" src="../../_images/chrome.png" />
 <ol class="arabic simple">
 <li>Open Chrome</li>
-<li>Search “<a class="reference external" href="https://10.1.1.7/">https://10.1.1.7/</a>”</li>
-<li>Login Credentials: admin - admin</li>
+<li>Search “<a class="reference external" href="https://10.1.1.4/">https://10.1.1.4/</a>”</li>
+<li>Login Credentials: admin - GoodBaklava123!&#64;#</li>
 <li>Check BIG-IP is blank</li>
 </ol>
 </div>
@@ -168,28 +168,28 @@ To manually install follow <a class="reference external" href="https://clouddocs
 <p class="last">In DO you can only <strong>POST</strong> and <strong>GET</strong>. Can’t <strong>PATCH</strong> You will overwrite things</p>
 </div>
 <ol class="arabic simple" start="5">
-<li>First we will check the version of DO with the <strong>GET</strong> command to the URI</li>
+<li>First we will check the version of DO with the <strong>GET</strong> command to the URI.</li>
 </ol>
 <img alt="../../_images/post.png" src="../../_images/post.png" />
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://&lt;BIG-IP&gt;/mgmt/shared/declarative-onboarding/info
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding/info
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
 <li>Now we will check to see the iControl LX extensions install on the BIG-IP with the <strong>GET</strong> command to the URI.</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/iapp/installed-packages
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/iapp/installed-packages
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
 <li>Now we will check to see the current config on the BIG-IP with the <strong>GET</strong> command to the URI.</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/declarative-onboarding?show=full
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding?show=full
 </pre></div>
 </div>
 <ol class="arabic simple" start="8">
-<li>Now we will onboard a big a BIG-IP by using <strong>POST</strong> to the URI</li>
+<li>Now we will onboard a big a BIG-IP by using <strong>POST</strong> to the URI.</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://&lt;BIG-IP&gt;/mgmt/shared/declarative-onboarding
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4//mgmt/shared/declarative-onboarding
 </pre></div>
 </div>
 <p>with the following declaration:</p>
@@ -274,13 +274,30 @@ To manually install follow <a class="reference external" href="https://clouddocs
 <div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding/task/
 </pre></div>
 </div>
+<p>You should get a 200 OK from Postman</p>
 </div>
-<div class="section" id="id1">
-<h2>2.1.4. Open Browser in RDP<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verify-changes">
+<h2>2.1.4. Verify Changes<a class="headerlink" href="#verify-changes" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Check BIG-IP is activated</li>
+<li>To see changes for DNS go to configuration utility, click the Configuration tab then under the Device tab click DNS.</li>
 </ol>
-<img alt="../../_images/activated.png" src="../../_images/activated.png" />
+<img alt="../../_images/dns.png" src="../../_images/dns.png" />
+<ol class="arabic simple" start="2">
+<li>To see changes for NTP go to configuration utility, click the Configuration tab then under the Device tab click NTP.</li>
+</ol>
+<img alt="../../_images/ntp.png" src="../../_images/ntp.png" />
+<ol class="arabic simple" start="3">
+<li>To see changes for the internal and external VLANs go to configuration utility, click the Network tab then under the VLANs tab click VLAN list.</li>
+</ol>
+<img alt="../../_images/vlan.png" src="../../_images/vlan.png" />
+<ol class="arabic simple" start="4">
+<li>To see changes for the internal-self and external-self VLANs go to configuration utility, click the Network tab then click the Self IPs tab.</li>
+</ol>
+<img alt="../../_images/selfip.png" src="../../_images/selfip.png" />
+<ol class="arabic simple" start="5">
+<li>To see changes for external_default_gateway go to configuration utility, click the Network tab then click the Routes tab.</li>
+</ol>
+<img alt="../../_images/external_gw.png" src="../../_images/external_gw.png" />
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Don’t revoke license</p>
