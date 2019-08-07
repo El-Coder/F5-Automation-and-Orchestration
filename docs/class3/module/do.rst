@@ -76,7 +76,7 @@ Postman App
 
 .. code-block:: TMSH
 
- https://10.1.1.4//mgmt/shared/declarative-onboarding
+ https://10.1.1.4/mgmt/shared/declarative-onboarding
 
 with the following declaration:
 
