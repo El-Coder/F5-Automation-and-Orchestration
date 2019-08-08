@@ -8,28 +8,30 @@ While there are many methods to consume Telemetry Streaming data, this demo uses
 IAM user access key and secret key in UDF Documentation.
 
 
+**Assumptions**
+
+This lab guide assumes you know how to use postman. If not follow this tutorial https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html
+
+
 **Prerequisites**
 
-.. NOTE:: This lab guide assumes you know how to use postman 
-   if not follow this tutorial https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html
-
-Get access to AWS CloudWatch IAM – Note that this could take an extended amount of time (2 days avg)
+1. Get access to AWS CloudWatch IAM (this could take an extended amount of time 2 days average).
 In your local browser, navigate to https://federate.f5.com
 
 
-- Click on the Service Now tile
+2. Click on the Service Now tile
 
 .. image:: /_static/service_now.png
 
-- Click on “Submit Ticket”
+3. Click on “Submit Ticket”
 
 .. image:: /_static/submit.png
 
-- Click on “Information Technology”
+4. Click on “Information Technology”
 
 .. image:: /_static/it.png
 
-To submit a ticket - Search for “aws”,  click on “Access to a cloud account”
+5. To submit a ticket - Search for “aws”,  click on “Access to a cloud account”
 
 - In the “Select a platform” dropdown, select AWS
 - In the “Do you know the cloud account you want access to?” dropdown, enter your information

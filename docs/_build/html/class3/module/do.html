@@ -77,9 +77,10 @@
             <ul>
 <li><a class="reference internal" href="#">2.1. Declarative Onboarding – Getting Started</a><ul>
 <li><a class="reference internal" href="#deploy-udf">2.1.1. Deploy UDF</a></li>
-<li><a class="reference internal" href="#open-browser-in-rdp">2.1.2. Open Browser in RDP</a></li>
-<li><a class="reference internal" href="#postman-app">2.1.3. Postman App</a></li>
-<li><a class="reference internal" href="#verify-changes">2.1.4. Verify Changes</a></li>
+<li><a class="reference internal" href="#login-into-big-ip">2.1.2. Login into BIG-IP</a></li>
+<li><a class="reference internal" href="#configure-postman-app">2.1.3. Configure Postman App</a></li>
+<li><a class="reference internal" href="#create-postman-collection-and-send-declaration">2.1.4. Create Postman Collection and Send Declaration</a></li>
+<li><a class="reference internal" href="#verify-changes-on-big-ip">2.1.5. Verify Changes on BIG-IP</a></li>
 </ul>
 </li>
 </ul>
@@ -143,65 +144,97 @@ To manually install follow <a class="reference external" href="https://clouddocs
 </ol>
 <img alt="../../_images/rdp.png" src="../../_images/rdp.png" />
 </div>
-<div class="section" id="open-browser-in-rdp">
-<h2>2.1.2. Open Browser in RDP<a class="headerlink" href="#open-browser-in-rdp" title="Permalink to this headline">¶</a></h2>
-<img alt="../../_images/chrome.png" src="../../_images/chrome.png" />
+<div class="section" id="login-into-big-ip">
+<h2>2.1.2. Login into BIG-IP<a class="headerlink" href="#login-into-big-ip" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Open Chrome</li>
-<li>Search “<a class="reference external" href="https://10.1.1.4/">https://10.1.1.4/</a>”</li>
+<li>Open the RDP with the Credentials: Adminstrator - LwbzexeWL9AT</li>
+<li>Open Chrome.</li>
+</ol>
+<img alt="../../_images/chrome.png" src="../../_images/chrome.png" />
+<ol class="arabic simple" start="3">
+<li>Go to “<a class="reference external" href="https://10.1.1.4/">https://10.1.1.4/</a>”.</li>
 <li>Login Credentials: admin - GoodBaklava123!&#64;#</li>
-<li>Check BIG-IP is blank</li>
+</ol>
+<img alt="../../_images/DO_Chrome.png" src="../../_images/DO_Chrome.png" />
+<ol class="arabic simple" start="5">
+<li>Verify BIG-IP isn’t already configured.</li>
 </ol>
 </div>
-<div class="section" id="postman-app">
-<h2>2.1.3. Postman App<a class="headerlink" href="#postman-app" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configure-postman-app">
+<h2>2.1.3. Configure Postman App<a class="headerlink" href="#configure-postman-app" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Open the Postman application</li>
 </ol>
 <img alt="../../_images/desktop.png" src="../../_images/desktop.png" />
 <ol class="arabic simple" start="2">
-<li>In Preferences, toggle the SSL Certificate Verification off</li>
+<li>At the bottom of the page in grey text select “Skip signing in and take me straight to the app”</li>
 </ol>
+<img alt="../../_images/skip.png" src="../../_images/skip.png" />
+<ol class="arabic simple" start="3">
+<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification</li>
+</ol>
+<img alt="../../_images/settings.png" src="../../_images/settings.png" />
 <img alt="../../_images/ssl.png" src="../../_images/ssl.png" />
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In DO you can only <strong>POST</strong> and <strong>GET</strong>. Can’t <strong>PATCH</strong> You will overwrite things</p>
 </div>
+<div class="section" id="create-postman-collection-and-send-declaration">
+<h2>2.1.4. Create Postman Collection and Send Declaration<a class="headerlink" href="#create-postman-collection-and-send-declaration" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>In the Collections tab click Create a collection and name it “Declarative Onboarding Collection” and click Create.</li>
+</ol>
+<img alt="../../_images/DO_Collection.png" src="../../_images/DO_Collection.png" />
+<ol class="arabic simple" start="2">
+<li>In the newly created “Declarative Onboarding Collection”, click the three dots and select Add Request.</li>
+</ol>
+<img alt="../../_images/DO_Request.png" src="../../_images/DO_Request.png" />
+<ol class="arabic simple" start="3">
+<li>In the pop-up window enter “Declarative Onboarding Declaration” for Request name and click Save to “Declarative Onboarding Collection”</li>
+</ol>
+<img alt="../../_images/DO_Declaration.png" src="../../_images/DO_Declaration.png" />
+<ol class="arabic simple" start="4">
+<li>Expand the Declarative Onboarding Collection and click the “Declarative Onboarding Declaration” request.</li>
+</ol>
+<img alt="../../_images/DO_Expanded.png" src="../../_images/DO_Expanded.png" />
 <ol class="arabic simple" start="5">
-<li>First we will check the version of DO with the <strong>GET</strong> command to the URI.</li>
+<li>Click “GET”, which is the default method, and select “POST” from the dropdown.</li>
 </ol>
-<img alt="../../_images/post.png" src="../../_images/post.png" />
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding/info
-</pre></div>
-</div>
+<img alt="../../_images/DO_Post.png" src="../../_images/DO_Post.png" />
 <ol class="arabic simple" start="6">
-<li>Now we will check to see the iControl LX extensions install on the BIG-IP with the <strong>GET</strong> command to the URI.</li>
+<li>In the “Enter request URL” bar enter:</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/iapp/installed-packages
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://https://10.1.1.4/mgmt/shared/declarative-onboarding/
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Now we will check to see the current config on the BIG-IP with the <strong>GET</strong> command to the URI.</li>
+<li>Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as “GoodBaklava123!&#64;#”</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding?show=full
-</pre></div>
-</div>
+<img alt="../../_images/DO_Auth.png" src="../../_images/DO_Auth.png" />
 <ol class="arabic simple" start="8">
-<li>Now we will onboard a big a BIG-IP by using <strong>POST</strong> to the URI.</li>
+<li>Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding
-</pre></div>
+<img alt="../../_images/DO_blob.png" src="../../_images/DO_blob.png" />
+<ol class="arabic simple" start="9">
+<li>Paste the following declaration into the text body then click the save button next to the send button, then click the send button.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use your license key here.</p>
 </div>
-<p>with the following declaration:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Device&quot;</span><span class="p">,</span>
     <span class="nt">&quot;async&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-
     <span class="nt">&quot;Common&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span><span class="p">,</span>
         <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-10-1-1-4.us-west-2.compute.internal&quot;</span><span class="p">,</span>
-
+        <span class="nt">&quot;myLicense&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;License&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;licenseType&quot;</span><span class="p">:</span> <span class="s2">&quot;regKey&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;regKey&quot;</span><span class="p">:</span> <span class="s2">&quot;IELDT-MUCZT-GMSMR-KQOKZ-NOVFIBG&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;myProvisioning&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Provision&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ltm&quot;</span><span class="p">:</span> <span class="s2">&quot;nominal&quot;</span>
+        <span class="p">},</span>
         <span class="nt">&quot;myDns&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;DNS&quot;</span><span class="p">,</span>
             <span class="nt">&quot;nameServers&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -211,7 +244,6 @@ To manually install follow <a class="reference external" href="https://clouddocs
                 <span class="s2">&quot;f5.com&quot;</span>
             <span class="p">]</span>
         <span class="p">},</span>
-
         <span class="nt">&quot;myNtp&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;NTP&quot;</span><span class="p">,</span>
             <span class="nt">&quot;servers&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -220,7 +252,6 @@ To manually install follow <a class="reference external" href="https://clouddocs
             <span class="p">],</span>
             <span class="nt">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span>
         <span class="p">},</span>
-
         <span class="nt">&quot;internal&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;VLAN&quot;</span><span class="p">,</span>
             <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -230,7 +261,6 @@ To manually install follow <a class="reference external" href="https://clouddocs
                 <span class="p">}</span>
             <span class="p">]</span>
         <span class="p">},</span>
-
         <span class="nt">&quot;internal-self&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;SelfIp&quot;</span><span class="p">,</span>
             <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;10.1.10.99/24&quot;</span><span class="p">,</span>
@@ -238,7 +268,6 @@ To manually install follow <a class="reference external" href="https://clouddocs
             <span class="nt">&quot;allowService&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
             <span class="nt">&quot;trafficGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;traffic-group-local-only&quot;</span>
         <span class="p">},</span>
-
         <span class="nt">&quot;external&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;VLAN&quot;</span><span class="p">,</span>
             <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -248,7 +277,6 @@ To manually install follow <a class="reference external" href="https://clouddocs
                 <span class="p">}</span>
             <span class="p">]</span>
         <span class="p">},</span>
-
         <span class="nt">&quot;external-self&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;SelfIp&quot;</span><span class="p">,</span>
             <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;10.1.20.99/24&quot;</span><span class="p">,</span>
@@ -256,30 +284,33 @@ To manually install follow <a class="reference external" href="https://clouddocs
             <span class="nt">&quot;allowService&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
             <span class="nt">&quot;trafficGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;traffic-group-local-only&quot;</span>
         <span class="p">},</span>
-
         <span class="nt">&quot;external_default_gateway&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Route&quot;</span><span class="p">,</span>
             <span class="nt">&quot;gw&quot;</span><span class="p">:</span> <span class="s2">&quot;10.1.10.9&quot;</span><span class="p">,</span>
             <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
             <span class="nt">&quot;mtu&quot;</span><span class="p">:</span> <span class="mi">1500</span>
         <span class="p">}</span>
-
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="9">
-<li>Now we will check tasks with the <strong>GET</strong> command to the URI.</li>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In DO you can only <strong>POST</strong> and <strong>GET</strong>. Can’t <strong>PATCH</strong> You will overwrite things</p>
+</div>
+<ol class="arabic simple" start="10">
+<li>Now we will check status of the declaration, change to the <strong>GET</strong> method and the URI to the line below, then click the send button.</li>
 </ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding/task/
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.4/mgmt/shared/declarative-onboarding/info
 </pre></div>
 </div>
-<p>You should get a 200 OK from Postman</p>
+<p>You should get a 200 OK from Postman.</p>
+<img alt="../../_images/DO_Okay.png" src="../../_images/DO_Okay.png" />
 </div>
-<div class="section" id="verify-changes">
-<h2>2.1.4. Verify Changes<a class="headerlink" href="#verify-changes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verify-changes-on-big-ip">
+<h2>2.1.5. Verify Changes on BIG-IP<a class="headerlink" href="#verify-changes-on-big-ip" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>To see changes for DNS go to configuration utility, click the Configuration tab then under the Device tab click DNS.</li>
+<li>Log back into BIG-IP and to see changes for DNS go to configuration utility, click the Configuration tab then under the Device tab click DNS.</li>
 </ol>
 <img alt="../../_images/dns.png" src="../../_images/dns.png" />
 <ol class="arabic simple" start="2">

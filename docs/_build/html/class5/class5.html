@@ -123,27 +123,26 @@
 <p>This section of the demo is for the integration of Telemetry Streaming. The goal is to facilitate an automated configuration of Telemetry Streaming with a BIG-IP and connect the log stream to AWS CloudWatch.</p>
 <p>While there are many methods to consume Telemetry Streaming data, this demo uses AWS CloudWatch IAM users. We will collect data from the application hosted at 10.1.20.9 on Big-IP 10.1.1.7.</p>
 <p>IAM user access key and secret key in UDF Documentation.</p>
+<p><strong>Assumptions</strong></p>
+<p>This lab guide assumes you know how to use postman. If not follow this tutorial <a class="reference external" href="https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html">https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html</a></p>
 <p><strong>Prerequisites</strong></p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This lab guide assumes you know how to use postman
-if not follow this tutorial <a class="reference external" href="https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html">https://clouddocs.f5.com/training/community/waf/html/class7/module1/lab1/lab1.html</a></p>
-</div>
-<p>Get access to AWS CloudWatch IAM – Note that this could take an extended amount of time (2 days avg)
+<p>1. Get access to AWS CloudWatch IAM (this could take an extended amount of time 2 days average).
 In your local browser, navigate to <a class="reference external" href="https://federate.f5.com">https://federate.f5.com</a></p>
-<ul class="simple">
+<ol class="arabic simple" start="2">
 <li>Click on the Service Now tile</li>
-</ul>
+</ol>
 <img alt="../_images/service_now.png" src="../_images/service_now.png" />
-<ul class="simple">
+<ol class="arabic simple" start="3">
 <li>Click on “Submit Ticket”</li>
-</ul>
+</ol>
 <img alt="../_images/submit.png" src="../_images/submit.png" />
-<ul class="simple">
+<ol class="arabic simple" start="4">
 <li>Click on “Information Technology”</li>
-</ul>
+</ol>
 <img alt="../_images/it.png" src="../_images/it.png" />
-<p>To submit a ticket - Search for “aws”,  click on “Access to a cloud account”</p>
+<ol class="arabic simple" start="5">
+<li>To submit a ticket - Search for “aws”,  click on “Access to a cloud account”</li>
+</ol>
 <ul class="simple">
 <li>In the “Select a platform” dropdown, select AWS</li>
 <li>In the “Do you know the cloud account you want access to?” dropdown, enter your information</li>

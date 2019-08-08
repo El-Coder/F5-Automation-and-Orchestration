@@ -76,8 +76,9 @@
         <span class="nav-sidebartoc">
             <ul>
 <li><a class="reference internal" href="#">3.2.1. Using AS3 with BIG-IQ – Getting Started</a></li>
-<li><a class="reference internal" href="#log-in-and-declaration">3.2.2. Log in and Declaration</a></li>
-<li><a class="reference internal" href="#clear-partition">3.2.3. Clear Partition</a></li>
+<li><a class="reference internal" href="#log-in">3.2.2. Log in</a></li>
+<li><a class="reference internal" href="#create-postman-collection-and-send-declaration">3.2.3. Create Postman Collection and Send Declaration</a></li>
+<li><a class="reference internal" href="#add-new-request-to-collection">3.2.4. Add New Request To Collection</a></li>
 </ul>
 
          </span>
@@ -122,8 +123,8 @@
 Whenever you perform an authenticated login to the BIG-IQ, and request a token using the Auth Token, you receive both an access token and refresh token. You can use the access token to send HTTP/HTTPS requests to a BIG-IQ until the access token expires after 5 minutes.
 For more information <a class="reference external" href="https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_auth_login.html">https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_auth_login.html</a></p>
 </div>
-<div class="section" id="log-in-and-declaration">
-<h1>3.2.2. Log in and Declaration<a class="headerlink" href="#log-in-and-declaration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="log-in">
+<h1>3.2.2. Log in<a class="headerlink" href="#log-in" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>To use BIG-IQ you must <strong>POST</strong> login for authentication.</li>
 </ol>
@@ -149,12 +150,46 @@ For more information <a class="reference external" href="https://clouddocs.f5net
 <span class="p">}</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><strong>POST</strong> The following declaration.</li>
+</div>
+<div class="section" id="create-postman-collection-and-send-declaration">
+<h1>3.2.3. Create Postman Collection and Send Declaration<a class="headerlink" href="#create-postman-collection-and-send-declaration" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>In the Collections tab click Create a collection and name it “AS3 To BIG-IQ Collection” and click Create.</li>
 </ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/appsvcs/declare
+<img alt="../../_images/AS3_BIGIQCollection.png" src="../../_images/AS3_BIGIQCollection.png" />
+<ol class="arabic simple" start="2">
+<li>In the newly created “AS3 To BIG-IQ Collection”, click the three dots and select Add Request.</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQRequest.png" src="../../_images/AS3_BIGIQRequest.png" />
+<ol class="arabic simple" start="3">
+<li>In the pop-up window enter “AS3 Declaration” for Request name and click Save to “AS3 Collection”</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQDeets.png" src="../../_images/AS3_BIGIQDeets.png" />
+<ol class="arabic simple" start="4">
+<li>Expand the AS3 To BIG-IQ Collection and click the “AS3 Declaration” request.</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQExpanded.png" src="../../_images/AS3_BIGIQExpanded.png" />
+<ol class="arabic simple" start="5">
+<li>Click “GET”, which is the default method, and select “POST” from the dropdown.</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQPost.png" src="../../_images/AS3_BIGIQPost.png" />
+<ol class="arabic simple" start="6">
+<li>In the “Enter request URL” bar enter:</li>
+</ol>
+<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://https://10.1.1.7/mgmt/shared/appsvcs/declare
 </pre></div>
 </div>
+<ol class="arabic simple" start="7">
+<li>Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as “admin”</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQAuth.png" src="../../_images/AS3_BIGIQAuth.png" />
+<ol class="arabic simple" start="8">
+<li>Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQblob.png" src="../../_images/AS3_BIGIQblob.png" />
+<ol class="arabic simple" start="9">
+<li>Paste the following declaration into the text box:</li>
+</ol>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
     <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -225,30 +260,45 @@ For more information <a class="reference external" href="https://clouddocs.f5net
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="clear-partition">
-<h1>3.2.3. Clear Partition<a class="headerlink" href="#clear-partition" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic simple">
-<li>Now we will delete the application using the POST command again to the following URI</li>
+<ol class="arabic simple" start="10">
+<li>Save the request by clicking the save button next to the send button.</li>
+<li>Now we will configure our L4-L7 services by clicking the send button. You should get a 200 OK from Postman.</li>
 </ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/appsvcs/declare
-</pre></div>
+<img alt="../../_images/AS3_BIGIQSuccess.png" src="../../_images/AS3_BIGIQSuccess.png" />
+<ol class="arabic simple" start="12">
+<li>Open Chrome and check now BIG-IP has application.</li>
+</ol>
+<img alt="../../_images/bigiqapp.png" src="../../_images/bigiqapp.png" />
 </div>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.1.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;BigIQ_App_Tenant&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<div class="section" id="add-new-request-to-collection">
+<h1>3.2.4. Add New Request To Collection<a class="headerlink" href="#add-new-request-to-collection" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Follow the steps from 2-8 in the previous section this time the request name will be called “Clear Partition”.</li>
+<li>Paste the following declaration.</li>
+</ol>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span>
+   <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.13.0&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;new_partition&quot;</span><span class="p">:</span> <span class="p">{</span>
+           <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li>Open Browser and check that BIG-IQ has no application</li>
+<ol class="arabic simple" start="3">
+<li>Save the request</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQClearBeforeSend.png" src="../../_images/AS3_BIGIQClearBeforeSend.png" />
+<ol class="arabic simple" start="4">
+<li>Now we will delete the application by clicking the send button. You should get a 200 OK from Postman.</li>
+</ol>
+<img alt="../../_images/AS3_BIGIQClearSuccess.png" src="../../_images/AS3_BIGIQClearSuccess.png" />
+<ol class="arabic simple" start="5">
+<li>Open Browser and check that BIG-IP has no application</li>
 </ol>
 <img alt="../../_images/noas3.png" src="../../_images/noas3.png" />
 <div class="admonition note">

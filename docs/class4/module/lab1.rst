@@ -24,64 +24,108 @@ Deploy UDF
 
 .. image:: /_static/rdp.png
 
-Open Browser in RDP
-------------------- 
+Login into BIG-IP
+----------------- 
+
+1. Open the RDP with the Credentials: Adminstrator - LwbzexeWL9AT
+
+2. Open Chrome.
+
 .. image:: /_static/chrome.png
 
-1. Open Chrome
-2. Search “https://10.1.1.7/”
-3. Login into BIG-IP Credentials: admin - admin
+3. Go to “https://10.1.1.7/”.
+
+4. Login into BIG-IP Credentials: admin - admin
+
+.. image:: /_static/AS3_Login.png
+
+5. Verify no application is already on BIG-IP
 
 .. image:: /_static/noapp.png
 
-.. NOTE:: No application is already on BIG-IP
-
-Open Postman and Create Partition
---------------------------------- 
+Configure Postman App
+--------------------- 
+1. Open the Postman application
 
 .. image:: /_static/desktop.png
 
-.. image:: /_static/post.png
+2. At the bottom of the page in grey text select “Skip signing in and take me straight to the app”
 
-1. Using Postman we will first check the verison of AS3 the |bip| has by using a **GET** command to the following URI 
+.. image:: /_static/skip.png
+
+3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification
+
+.. image:: /_static/settings.png
+
+.. image:: /_static/ssl.png
+
+
+Create Postman Collection and Send Declaration
+----------------------------------------------
+
+1. In the Collections tab click Create a collection and name it "AS3 Collection" and click Create.
+
+.. image:: /_static/AS3_Collection.png
+
+2. In the newly created "AS3 Collection", click the three dots and select Add Request.
+
+.. image:: /_static/AS3_Dots.png
+
+3. In the pop-up window enter “AS3 Declaration” for Request name and click Save to “AS3 Collection”
+
+.. image:: /_static/AS3_Request.png
+
+4. Expand the AS3 Collection and click the “AS3 Declaration” request.
+
+.. image:: /_static/AS3_Expanded.png
+
+5. Click “GET”, which is the default method, and select “POST” from the dropdown.
+
+.. image:: /_static/AS3_Post.png
+
+6. In the “Enter request URL” bar enter:
 
 .. code-block:: TMSH
 
-    https://<BIG-IP>/mgmt/shared/appsvcs/info
+    https://https://10.1.1.7/mgmt/shared/appsvcs/declare
 
-2. Using Postman we will modify |bip| by using **POST** commands to the following URI 
+7. Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as "admin”
 
+.. image:: /_static/AS3_Auth.png
 
-.. code-block:: TMSH
+8. Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”
 
-    https://<BIG-IP>/mgmt/shared/appsvcs/declare
+.. image:: /_static/AS3_blob.png
+
+9. Paste the following declaration into the text box:
 
 .. code-block:: JSON
 
-        {
+    {
         "class": "AS3",
         "action": "deploy",
         "persist": true,
         
         "declaration": {
             "class": "ADC",
-            "schemaVersion": "3.0.0",
+            "schemaVersion": "3.13.0",
             "controls": {
                 "trace": true
             },
             
-            "new_partition": {
+            "My_AS3_Tenant": {
                 "class": "Tenant",
                 
-                "Application_1": {
+                "My_AS3_App": {
                     "class": "Application",
                     "template": "generic",
+
 
                     "Virtual_Server": {
                         "class": "Service_Generic",
                         "virtualPort": 80,
                         "virtualAddresses": [
-                            "10.1.20.9"	
+                            "10.1.20.9"    
                         ],
                         "pool": "http_pool",
                         "profileHTTP": {"use": "http"}
@@ -90,7 +134,15 @@ Open Postman and Create Partition
                     "http_pool": {
                         "class": "Pool",
                         "monitors": [
-                            "http"	
+                            {
+                                "bigip": "/Common/http_index"
+                            },
+                            {
+                                "bigip": "/Common/http_basic"
+                            },
+                            {
+                                "bigip": "/Common/http_default"
+                            }
                         ],
                         "members":[
                             {
@@ -101,28 +153,34 @@ Open Postman and Create Partition
                                 ]
                             }
                         ]
-                    },
-                    
-                    "http": {
-                        "class":"HTTP_Profile"
                     }
                 }
             }
         }
     }
 
-3. Open Browser and check now BIG-IP has application 
+
+
+
+
+10. Save the request by clicking the save button next to the send button.
+
+.. image:: /_static/AS3_Save.png
+
+11. Now we will configure our L4-L7 services by clicking the send button. You should get a 200 OK from Postman.
+
+.. image:: /_static/AS3_Success.png
+
+12. Open Chrome and check now BIG-IP has application.
 
 .. image:: /_static/app.png
 
-Clear Partition
----------------
+Add New Request To Collection
+----------------------------- 
 
-1. Now we will delete the application using the **POST** command again to the following URI 
+1. Follow the steps from 2-8 in the previous section this time the request name will be called "Clear Partition".
 
-.. code-block:: TMSH
-
-    https://<BIG-IP>/mgmt/shared/appsvcs/declare
+2. Paste the following declaration.
 
 .. code-block:: JSON
 
@@ -131,14 +189,22 @@ Clear Partition
     "action": "deploy",
     "declaration": {
         "class": "ADC",
-        "schemaVersion": "3.8.0",
+        "schemaVersion": "3.13.0",
         "new_partition": {
             "class": "Tenant"        
         }
     }
  }
 
-2. Open Browser and check that BIG-IP has no application 
+3. Save the request
+
+.. image:: /_static/AS3_ClearBeforeSend.png
+
+4. Now we will delete the application by clicking the send button. You should get a 200 OK from Postman.
+
+.. image:: /_static/AS3_ClearSuccess.png
+
+5. Open Browser and check that BIG-IP has no application 
 
 .. image:: /_static/noas3.png
 

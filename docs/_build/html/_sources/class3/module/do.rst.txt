@@ -30,55 +30,79 @@ Deploy UDF
 
 .. image:: /_static/rdp.png
 
-Open Browser in RDP
-~~~~~~~~~~~~~~~~~~~
+Login into BIG-IP
+~~~~~~~~~~~~~~~~~
+
+1. Open the RDP with the Credentials: Adminstrator - LwbzexeWL9AT
+
+2. Open Chrome.
+
 .. image:: /_static/chrome.png
 
-1. Open Chrome
-2. Search “https://10.1.1.4/”
-3. Login Credentials: admin - GoodBaklava123!@#
-4. Check BIG-IP is blank 
+3. Go to “https://10.1.1.4/”.
 
-Postman App
-~~~~~~~~~~~ 
-1.	Open the Postman application
+4. Login Credentials: admin - GoodBaklava123!@#
+
+.. image:: /_static/DO_Chrome.png
+
+5. Verify BIG-IP isn't already configured.  
+
+Configure Postman App
+~~~~~~~~~~~~~~~~~~~~~  
+1. Open the Postman application
 
 .. image:: /_static/desktop.png
 
-2.	In Preferences, toggle the SSL Certificate Verification off
+2. At the bottom of the page in grey text select “Skip signing in and take me straight to the app”
+
+.. image:: /_static/skip.png
+
+3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification
+
+.. image:: /_static/settings.png
 
 .. image:: /_static/ssl.png
 
-.. NOTE::
-   In DO you can only **POST** and **GET**. Can’t **PATCH** You will overwrite things
+Create Postman Collection and Send Declaration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
 
-5. First we will check the version of DO with the **GET** command to the URI.
+1. In the Collections tab click Create a collection and name it "Declarative Onboarding Collection" and click Create.
 
-.. image:: /_static/post.png
+.. image:: /_static/DO_Collection.png
+
+2. In the newly created "Declarative Onboarding Collection", click the three dots and select Add Request.
+
+.. image:: /_static/DO_Request.png
+
+3. In the pop-up window enter “Declarative Onboarding Declaration” for Request name and click Save to “Declarative Onboarding Collection”
+
+.. image:: /_static/DO_Declaration.png
+
+4. Expand the Declarative Onboarding Collection and click the “Declarative Onboarding Declaration” request.
+
+.. image:: /_static/DO_Expanded.png
+
+5. Click “GET”, which is the default method, and select “POST” from the dropdown.
+
+.. image:: /_static/DO_Post.png
+
+6. In the “Enter request URL” bar enter:
 
 .. code-block:: TMSH
 
- https://10.1.1.4/mgmt/shared/declarative-onboarding/info
+    https://https://10.1.1.4/mgmt/shared/declarative-onboarding/
 
-6. Now we will check to see the iControl LX extensions install on the BIG-IP with the **GET** command to the URI.
+7. Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as “GoodBaklava123!@#”
 
-.. code-block:: TMSH
+.. image:: /_static/DO_Auth.png
 
- https://10.1.1.4/mgmt/shared/iapp/installed-packages
+8. Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”
 
-7. Now we will check to see the current config on the BIG-IP with the **GET** command to the URI.
+.. image:: /_static/DO_blob.png
 
-.. code-block:: TMSH
+9. Paste the following declaration into the text body then click the save button next to the send button, then click the send button.
 
- https://10.1.1.4/mgmt/shared/declarative-onboarding?show=full
-
-8. Now we will onboard a big a BIG-IP by using **POST** to the URI.
-
-.. code-block:: TMSH
-
- https://10.1.1.4/mgmt/shared/declarative-onboarding
-
-with the following declaration:
+.. NOTE:: Use your license key here.
 
 .. code-block:: JSON
 
@@ -86,11 +110,18 @@ with the following declaration:
         "schemaVersion": "1.0.0",
         "class": "Device",
         "async": true,
-        
         "Common": {
             "class": "Tenant",
             "hostname": "ip-10-1-1-4.us-west-2.compute.internal",
-
+            "myLicense": {
+                "class": "License",
+                "licenseType": "regKey",
+                "regKey": "IELDT-MUCZT-GMSMR-KQOKZ-NOVFIBG"
+            },
+            "myProvisioning": {
+                "class": "Provision",
+                "ltm": "nominal"
+            },
             "myDns": {
                 "class": "DNS",
                 "nameServers": [
@@ -100,7 +131,6 @@ with the following declaration:
                     "f5.com"
                 ]
             },
-            
             "myNtp": {
                 "class": "NTP",
                 "servers": [
@@ -109,7 +139,6 @@ with the following declaration:
                 ],
                 "timezone": "UTC"
             },
-            
             "internal": {
                 "class": "VLAN",
                 "interfaces": [
@@ -119,7 +148,6 @@ with the following declaration:
                     }
                 ]
             },
-            
             "internal-self": {
                 "class": "SelfIp",
                 "address": "10.1.10.99/24",
@@ -127,7 +155,6 @@ with the following declaration:
                 "allowService": "default",
                 "trafficGroup": "traffic-group-local-only"
             },
-            
             "external": {
                 "class": "VLAN",
                 "interfaces": [
@@ -137,7 +164,6 @@ with the following declaration:
                     }
                 ]
             },
-            
             "external-self": {
                 "class": "SelfIp",
                 "address": "10.1.20.99/24",
@@ -145,29 +171,32 @@ with the following declaration:
                 "allowService": "none",
                 "trafficGroup": "traffic-group-local-only"
             },
-            
             "external_default_gateway": {
                 "class": "Route",
                 "gw": "10.1.10.9",
                 "network": "default",
                 "mtu": 1500
             }
-            
         }
     }
 
-9. Now we will check tasks with the **GET** command to the URI.
+.. NOTE::
+   In DO you can only **POST** and **GET**. Can’t **PATCH** You will overwrite things
+
+10. Now we will check status of the declaration, change to the **GET** method and the URI to the line below, then click the send button.
 
 .. code-block:: TMSH
 
- https://10.1.1.4/mgmt/shared/declarative-onboarding/task/
+    https://10.1.1.4/mgmt/shared/declarative-onboarding/info
 
-You should get a 200 OK from Postman
+You should get a 200 OK from Postman.
 
-Verify Changes
-~~~~~~~~~~~~~~ 
+.. image:: /_static/DO_Okay.png
 
-1. To see changes for DNS go to configuration utility, click the Configuration tab then under the Device tab click DNS.  
+Verify Changes on BIG-IP
+~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+1. Log back into BIG-IP and to see changes for DNS go to configuration utility, click the Configuration tab then under the Device tab click DNS.  
 
 .. image:: /_static/dns.png
 
