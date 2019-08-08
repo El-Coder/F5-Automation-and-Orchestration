@@ -80,7 +80,7 @@ Create Postman Collection and Send Declaration
         "class": "AS3",
         "declaration": {
             "class": "ADC",
-            "schemaVersion": "3.7.0",
+            "schemaVersion": "3.13.0",
             "id": "bigiq_app_test",
             "label": "Test",
             "remark": "Generic app",
