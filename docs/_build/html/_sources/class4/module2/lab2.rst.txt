@@ -151,7 +151,7 @@ Create Postman Collection and Send Declaration
 
 .. image:: /_static/AS3_BIGIQSuccess.png
 
-12. Open Chrome and check now BIG-IP has application.
+12. Open Chrome and check now BIG-IP has application. Also make sure you are in the correct partition.
 
 .. image:: /_static/bigiqapp.png
 
