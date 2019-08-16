@@ -27,7 +27,7 @@ Deploy UDF
 Login into BIG-IP
 ----------------- 
 
-1. Open the RDP with the Credentials: Adminstrator - LwbzexeWL9AT
+1. Open the RDP with the Credentials: Adminstrator - YLwbzexeWL9AT
 
 2. Open Chrome.
 
@@ -87,7 +87,7 @@ Create Postman Collection and Send Declaration
 
 .. code-block:: TMSH
 
-    https://https://10.1.1.7/mgmt/shared/appsvcs/declare
+    https://10.1.1.7/mgmt/shared/appsvcs/declare
 
 7. Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as "admin”
 

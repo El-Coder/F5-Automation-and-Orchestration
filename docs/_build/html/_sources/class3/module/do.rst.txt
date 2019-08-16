@@ -33,7 +33,7 @@ Deploy UDF
 Login into BIG-IP
 ~~~~~~~~~~~~~~~~~
 
-1. Open the RDP with the Credentials: Adminstrator - LwbzexeWL9AT
+1. Open the RDP with the Credentials: Adminstrator - YLwbzexeWL9AT
 
 2. Open Chrome.
 
