@@ -62,7 +62,7 @@ Create Postman Collection and Send Declaration
 
 .. code-block:: TMSH
 
-    https://https://10.1.1.7/mgmt/shared/appsvcs/declare
+    https://10.1.1.7/mgmt/shared/appsvcs/declare
 
 7. Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as "admin”
 
