@@ -5,7 +5,7 @@
   <script src="https://assets.adobedtm.com/50164577268f481934e5d57dbfb78f929164cd0d/satelliteLib-ea775cfabef5fca8b04e9392f20c986c0724a7c3-staging.js"></script>
   <!--Production:-->
   <script src="https://assets.adobedtm.com/50164577268f481934e5d57dbfb78f929164cd0d/satelliteLib-ea775cfabef5fca8b04e9392f20c986c0724a7c3.js"></script>
-    <title>3.2.1. Using AS3 with BIG-IQ – Getting Started</title>
+    <title>3.2.1. Using AS3 with BIG-IQ 7.0</title>
   
 
   <meta charset="utf-8">
@@ -14,7 +14,7 @@
   <!-- F5 metadata -->
   <meta name="kb_doc_type" content="Manual"/>
   <meta name="kb_doc_type" content="User Guide"/>
-  <meta name="title" content="3.2.1. Using AS3 with BIG-IQ – Getting Started"/>
+  <meta name="title" content="3.2.1. Using AS3 with BIG-IQ 7.0"/>
   <meta name="product" content="F5-Automation-and-Orchestration"/>
   <meta name="version" content=""/>
   <meta name="updated_date"  content="None"/>
@@ -36,7 +36,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>3.2.1. Using AS3 with BIG-IQ – Getting Started &#8212; F5-Automation-and-Orchestration  documentation</title>
+    <title>3.2.1. Using AS3 with BIG-IQ 7.0 &#8212; F5-Automation-and-Orchestration  documentation</title>
     <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/css/f5_agility_theme.css" type="text/css" />
@@ -75,10 +75,12 @@
         <h5>Current Page</h5>
         <span class="nav-sidebartoc">
             <ul>
-<li><a class="reference internal" href="#">3.2.1. Using AS3 with BIG-IQ – Getting Started</a></li>
-<li><a class="reference internal" href="#log-in">3.2.2. Log in</a></li>
-<li><a class="reference internal" href="#create-postman-collection-and-send-declaration">3.2.3. Create Postman Collection and Send Declaration</a></li>
-<li><a class="reference internal" href="#add-new-request-to-collection">3.2.4. Add New Request To Collection</a></li>
+<li><a class="reference internal" href="#">3.2.1. Using AS3 with BIG-IQ 7.0</a></li>
+<li><a class="reference internal" href="#view-big-iq-without-as3-templates">3.2.2. View BIG-IQ Without AS3 Templates</a></li>
+<li><a class="reference internal" href="#import-postman-collection-from-github">3.2.3. Import Postman Collection from GitHub</a></li>
+<li><a class="reference internal" href="#send-as3-templates-to-big-iq-with-postman">3.2.4. Send AS3 Templates to BIG-IQ with Postman</a></li>
+<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.5. Create an Application with an AS3 Template in BIG-IQ</a></li>
+<li><a class="reference internal" href="#view-created-application-on-big-ip-10-1-1-7">3.2.6. View Created Application on BIG-IP (10.1.1.7)</a></li>
 </ul>
 
          </span>
@@ -110,200 +112,131 @@
     <article class="docs-container site-article-inner">
             <nav class="site-breadcrumb-nav site-nav">
           <ul class="site-breadcrumb-list">
-            <li class="breadcrumb-item"><button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn site-hidden"><i class="fa fa-align-justify"></i></button>&#x20 <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">F5-Automation-and-Orchestration </a> &gt; 3.2.1. Using AS3 with BIG-IQ – Getting Started</li>
+            <li class="breadcrumb-item"><button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn site-hidden"><i class="fa fa-align-justify"></i></button>&#x20 <a href="/">Community Training Classes &amp; Labs</a> &gt; <a href="../../index.html">F5-Automation-and-Orchestration </a> &gt; 3.2.1. Using AS3 with BIG-IQ 7.0</li>
           </ul>
       </nav>
       
       
 
     
-  <div class="section" id="using-as3-with-big-iq-getting-started">
-<h1>3.2.1. Using AS3 with BIG-IQ – Getting Started<a class="headerlink" href="#using-as3-with-big-iq-getting-started" title="Permalink to this headline">¶</a></h1>
-<p>You can use the same method to post a declaration to AS3 on BIG-IQ as for BIG-IP. F5 disables basic authentication for HTTP/HTTPS requests to the BIG-IQ API by default for security enhancement.
-Whenever you perform an authenticated login to the BIG-IQ, and request a token using the Auth Token, you receive both an access token and refresh token. You can use the access token to send HTTP/HTTPS requests to a BIG-IQ until the access token expires after 5 minutes.
-For more information <a class="reference external" href="https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_auth_login.html">https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_auth_login.html</a></p>
+  <div class="section" id="using-as3-with-big-iq-7-0">
+<h1>3.2.1. Using AS3 with BIG-IQ 7.0<a class="headerlink" href="#using-as3-with-big-iq-7-0" title="Permalink to this headline">¶</a></h1>
+<p>With BIG-IQ version 7.0 we can upload AS3 templates to the BIG-IQ with Postman.
+In the BIG-IQ GUI we can set values (IP addresses, ports, Tenant name)
+and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 </div>
-<div class="section" id="log-in">
-<h1>3.2.2. Log in<a class="headerlink" href="#log-in" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="view-big-iq-without-as3-templates">
+<h1>3.2.2. View BIG-IQ Without AS3 Templates<a class="headerlink" href="#view-big-iq-without-as3-templates" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>To use BIG-IQ you must <strong>POST</strong> login for authentication.</li>
+<li>Open Chrome and navigate to the bookmark titled “(BIG-IQ 10.1.1.8)”.</li>
+<li>Login to the BIG-IQ: username = admin, password = GoodBaklava123&#64;</li>
+<li>Click the Applications tab. In the left menu bar, select Application Templates.</li>
 </ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/appsvcs/declare
-</pre></div>
-</div>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-<span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="s2">&quot;*******&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<img alt="../../_images/iq.png" src="../../_images/iq.png" />
-<ol class="arabic simple" start="2">
-<li>From the response above <strong>POST</strong> the refresh token below after access token expires.</li>
-</ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/appsvcs/declare
-</pre></div>
-</div>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;refreshToken&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;insert token here&quot;</span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="create-postman-collection-and-send-declaration">
-<h1>3.2.3. Create Postman Collection and Send Declaration<a class="headerlink" href="#create-postman-collection-and-send-declaration" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic simple">
-<li>In the Collections tab click Create a collection and name it “AS3 To BIG-IQ Collection” and click Create.</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQCollection.png" src="../../_images/AS3_BIGIQCollection.png" />
-<ol class="arabic simple" start="2">
-<li>In the newly created “AS3 To BIG-IQ Collection”, click the three dots and select Add Request.</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQRequest.png" src="../../_images/AS3_BIGIQRequest.png" />
+<img alt="../../_images/7_1.png" src="../../_images/7_1.png" />
 <ol class="arabic simple" start="3">
-<li>In the pop-up window enter “AS3 Declaration” for Request name and click Save to “AS3 Collection”</li>
+<li>Notice above that AS3 Templates is empty.</li>
 </ol>
-<img alt="../../_images/AS3_BIGIQDeets.png" src="../../_images/AS3_BIGIQDeets.png" />
-<ol class="arabic simple" start="4">
-<li>Expand the AS3 To BIG-IQ Collection and click the “AS3 Declaration” request.</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQExpanded.png" src="../../_images/AS3_BIGIQExpanded.png" />
-<ol class="arabic simple" start="5">
-<li>Click “GET”, which is the default method, and select “POST” from the dropdown.</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQPost.png" src="../../_images/AS3_BIGIQPost.png" />
-<ol class="arabic simple" start="6">
-<li>In the “Enter request URL” bar enter:</li>
-</ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/appsvcs/declare
-</pre></div>
 </div>
-<ol class="arabic simple" start="7">
-<li>Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as “admin”</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQAuth.png" src="../../_images/AS3_BIGIQAuth.png" />
-<ol class="arabic simple" start="8">
-<li>Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQblob.png" src="../../_images/AS3_BIGIQblob.png" />
-<ol class="arabic simple" start="9">
-<li>Paste the following declaration into the text box:</li>
-</ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.13.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bigiq_app_test&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;remark&quot;</span><span class="p">:</span> <span class="s2">&quot;Generic app&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;ip-10-1-1-7.us-west-2.compute.internal&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;BigIQ_App_Tenant&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;BigIQApp&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Application&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;generic&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;BigIQVS&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Service_Generic&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;virtualAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="s2">&quot;10.1.20.9&quot;</span>
-                    <span class="p">],</span>
-                    <span class="nt">&quot;virtualPort&quot;</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>
-                    <span class="nt">&quot;pool&quot;</span><span class="p">:</span> <span class="s2">&quot;pool_with_vip&quot;</span>
-                <span class="p">},</span>
-
-                <span class="nt">&quot;pool_with_vip&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Pool&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;monitors&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="s2">&quot;http&quot;</span><span class="p">,</span>
-                        <span class="p">{</span><span class="nt">&quot;use&quot;</span><span class="p">:</span> <span class="s2">&quot;http_basic&quot;</span><span class="p">},</span>
-                        <span class="p">{</span><span class="nt">&quot;use&quot;</span><span class="p">:</span> <span class="s2">&quot;http_index&quot;</span><span class="p">},</span>
-                        <span class="p">{</span><span class="nt">&quot;use&quot;</span><span class="p">:</span> <span class="s2">&quot;http_default&quot;</span><span class="p">}</span>
-                    <span class="p">],</span>
-                    <span class="nt">&quot;members&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="nt">&quot;servicePort&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
-                    <span class="nt">&quot;serverAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="s2">&quot;10.1.10.5&quot;</span>
-                    <span class="p">]</span>
-                    <span class="p">}]</span>
-                <span class="p">},</span>
-
-                <span class="nt">&quot;http_basic&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Monitor&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;monitorType&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
-                    <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
-                    <span class="nt">&quot;send&quot;</span><span class="p">:</span> <span class="s2">&quot;GET /basic.html\r\n&quot;</span>
-                <span class="p">},</span>
-
-                <span class="nt">&quot;http_index&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Monitor&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;monitorType&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
-                    <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                    <span class="nt">&quot;send&quot;</span><span class="p">:</span> <span class="s2">&quot;GET /index.html\r\n&quot;</span>
-                <span class="p">},</span>
-
-                <span class="nt">&quot;http_default&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Monitor&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;monitorType&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span>
-                    <span class="nt">&quot;timeout&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-                    <span class="nt">&quot;send&quot;</span><span class="p">:</span> <span class="s2">&quot;GET /index.html\r\n&quot;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="10">
-<li>Save the request by clicking the save button next to the send button.</li>
-<li>Now we will configure our L4-L7 services by clicking the send button. You should get a 200 OK from Postman.</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQSuccess.png" src="../../_images/AS3_BIGIQSuccess.png" />
-<ol class="arabic simple" start="12">
-<li>Open Chrome and check now BIG-IP has application. Also make sure you are in the correct partition.</li>
-</ol>
-<img alt="../../_images/bigiqapp.png" src="../../_images/bigiqapp.png" />
-</div>
-<div class="section" id="add-new-request-to-collection">
-<h1>3.2.4. Add New Request To Collection<a class="headerlink" href="#add-new-request-to-collection" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="import-postman-collection-from-github">
+<h1>3.2.3. Import Postman Collection from GitHub<a class="headerlink" href="#import-postman-collection-from-github" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>Follow the steps from 2-8 in the previous section this time the request name will be called “Clear Partition”.</li>
-<li>Paste the following declaration.</li>
+<li>Open the Postman application on the Windows desktop.</li>
 </ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span>
-   <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.13.0&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;new_partition&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span>
-       <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<ol class="arabic simple" start="3">
+<li>Turn off “SSL certificate verificattion” by going to “File” in the top right, selecting “Settings” from the dropdown and in “General” turning off the “SSL certificate verificattion” button.</li>
+</ol>
+<p>4. Use the Postman Import feature to import the pre-made Postman Collection.
+To do this: (1) Click the Import button. (2) Click Import from Link.
+(3) For the Postman Collection, paste in the following and (4) click Import.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://raw.githubusercontent.com/jaustinf5/postman_collection/master/F5-Automation-and-Orchestration.postman_collection.json
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li>Save the request</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQClearBeforeSend.png" src="../../_images/AS3_BIGIQClearBeforeSend.png" />
-<ol class="arabic simple" start="4">
-<li>Now we will delete the application by clicking the send button. You should get a 200 OK from Postman.</li>
-</ol>
-<img alt="../../_images/AS3_BIGIQClearSuccess.png" src="../../_images/AS3_BIGIQClearSuccess.png" />
-<ol class="arabic simple" start="5">
-<li>Open Browser and check that BIG-IP has no application</li>
-</ol>
-<img alt="../../_images/noas3.png" src="../../_images/noas3.png" />
+<img alt="../../_images/7_2.png" src="../../_images/7_2.png" />
+<p>5. Once imported, you will be able to see the Postman Collection “F5-Automatition-and-Orchestration” as seen below.
+Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1 Application Service Deployment with AS3, etc.) and their respective requests.</p>
+<img alt="../../_images/7_3.png" src="../../_images/7_3.png" />
+</div>
+<div class="section" id="send-as3-templates-to-big-iq-with-postman">
+<h1>3.2.4. Send AS3 Templates to BIG-IQ with Postman<a class="headerlink" href="#send-as3-templates-to-big-iq-with-postman" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This is the end of the lab</p>
+<p class="last">The declarations titled “AS3-F5-*-big-iq-default” are requests made by F5 that work with BIG-IQ 7.0.</p>
+</div>
+<p>When we send the declaration, the template will be stored on the BIG-IQ.</p>
+<ol class="arabic simple">
+<li>Click into “Lab 3.2 - Using AS3 with BIG-IQ 7.0” and open the request, “Authenticate to BIG-IQ”.</li>
+<li>Open the “Body” tab to view the JSON declaration as seen below.</li>
+</ol>
+<img alt="../../_images/7_4.png" src="../../_images/7_4.png" />
+<ol class="arabic simple" start="3">
+<li>To send this declaration to the URI “<a class="reference external" href="https://10.1.1.8/mgmt/shared/authn/login">https://10.1.1.8/mgmt/shared/authn/login</a>” click the blue “Send” button on the right.</li>
+<li>Ensure that the response is 200.</li>
+</ol>
+<img alt="../../_images/7_5.png" src="../../_images/7_5.png" />
+<p><strong>* If error: “Invalid registered claims.”, the token has expired. Resend “Authenticate to BIG-IQ” request to fix.*</strong></p>
+<ol class="arabic simple" start="5">
+<li>Click into the request “AS3-F5-HTTP-lb-template-big-iq-default”. Open the “Body” tab to view the JSON declaration.</li>
+</ol>
+<img alt="../../_images/7_6.png" src="../../_images/7_6.png" />
+<ol class="arabic simple" start="6">
+<li>Click the blue “Send” button on the right. Ensure that response is 200.</li>
+</ol>
+<img alt="../../_images/7_7.png" src="../../_images/7_7.png" />
+</div>
+<div class="section" id="create-an-application-with-an-as3-template-in-big-iq">
+<h1>3.2.5. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Open Chrome and navigate to the bookmark titled “BIG-IQ (10.1.1.8)”.</li>
+<li>Login to the BIG-IQ: username = admin, password = GoodBaklava123&#64;</li>
+<li>Click the Applications tab. In the left menu bar, select Application Templates. Now you will see your uploaded template.</li>
+</ol>
+<img alt="../../_images/7_8.png" src="../../_images/7_8.png" />
+<p>3. Publish the template by checking the box next to the template name and then clicking “publish”.
+When you receive the pop-up, click the blue “Publish” button.</p>
+<img alt="../../_images/7_9.png" src="../../_images/7_9.png" />
+<ol class="arabic simple" start="4">
+<li>In the left menu bar, select Application and select the “Create” button.</li>
+</ol>
+<img alt="../../_images/7_10.png" src="../../_images/7_10.png" />
+<ol class="arabic simple" start="5">
+<li>Enter an “Application Name”. Here I’ve named mine, “app_made_by_as3_template”.</li>
+<li>From the “Template Type” dropdown, select our imported template.</li>
+</ol>
+<img alt="../../_images/7_11.png" src="../../_images/7_11.png" />
+<ol class="arabic simple" start="7">
+<li>For the “General Properties” section, enter similar information. For “Target”, make sure to select the corresponding hostname to 10.1.1.7 from the dropdown</li>
+</ol>
+<img alt="../../_images/7_12.png" src="../../_images/7_12.png" />
+<ol class="arabic simple" start="8">
+<li>For the “Pool” section, add “10.1.10.13” in “Server Addresses”</li>
+</ol>
+<img alt="../../_images/7_13.png" src="../../_images/7_13.png" />
+<ol class="arabic simple" start="9">
+<li>For the “Service_HTTP” section, add “10.1.20.50” in “Virtual addresses”.</li>
+</ol>
+<img alt="../../_images/7_14.png" src="../../_images/7_14.png" />
+<ol class="arabic simple" start="10">
+<li>Click the blue “Create” button. The page will load to below.</li>
+</ol>
+<img alt="../../_images/7_15.png" src="../../_images/7_15.png" />
+</div>
+<div class="section" id="view-created-application-on-big-ip-10-1-1-7">
+<h1>3.2.6. View Created Application on BIG-IP (10.1.1.7)<a class="headerlink" href="#view-created-application-on-big-ip-10-1-1-7" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Open a new tab in Chrome</li>
+<li>Open Chrome and navigate to the bookmark titled “(BIG-IP 10.1.1.87)”.</li>
+<li>Login to the BIG-IQ: username = admin, password = admin</li>
+<li>Change partition to your new partition.</li>
+<li>Open Local Traffic –&gt; Network Map</li>
+</ol>
+<img alt="../../_images/7_16.png" src="../../_images/7_16.png" />
+<ol class="arabic simple" start="6">
+<li>Open a new tab and enter the VIP 10.1.20.50 in the browser to view the app.</li>
+</ol>
+<img alt="../../_images/7_17.png" src="../../_images/7_17.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">End of the lab.</p>
 </div>
 </div>
 

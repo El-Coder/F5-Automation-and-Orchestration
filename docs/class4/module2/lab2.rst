@@ -1,191 +1,139 @@
-Using AS3 with BIG-IQ – Getting Started 
------------------------------------
+Using AS3 with BIG-IQ 7.0 
+-------------------------
 
-You can use the same method to post a declaration to AS3 on BIG-IQ as for BIG-IP. F5 disables basic authentication for HTTP/HTTPS requests to the BIG-IQ API by default for security enhancement.  
-Whenever you perform an authenticated login to the BIG-IQ, and request a token using the Auth Token, you receive both an access token and refresh token. You can use the access token to send HTTP/HTTPS requests to a BIG-IQ until the access token expires after 5 minutes.
-For more information https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_auth_login.html
+With BIG-IQ version 7.0 we can upload AS3 templates to the BIG-IQ with Postman. 
+In the BIG-IQ GUI we can set values (IP addresses, ports, Tenant name) 
+and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab). 
 
-Log in 
-------
 
-1. To use BIG-IQ you must **POST** login for authentication.
+View BIG-IQ Without AS3 Templates 
+---------------------------------
 
-.. code-block:: JSON 
+1. Open Chrome and navigate to the bookmark titled "(BIG-IQ 10.1.1.8)". 
+
+2. Login to the BIG-IQ: username = admin, password = GoodBaklava123@
+
+3. Click the Applications tab. In the left menu bar, select Application Templates.
+
+.. image:: /_static/7_1.png
+
+3. Notice above that AS3 Templates is empty.
+
+
+Import Postman Collection from GitHub 
+-------------------------------------
+
+1. Open the Postman application on the Windows desktop.
+
+3. Turn off "SSL certificate verificattion" by going to "File" in the top right, selecting "Settings" from the dropdown and in "General" turning off the "SSL certificate verificattion" button.
+4. Use the Postman Import feature to import the pre-made Postman Collection.
+To do this: (1) Click the Import button. (2) Click Import from Link. 
+(3) For the Postman Collection, paste in the following and (4) click Import.
     
-    https://10.1.1.7/mgmt/shared/appsvcs/declare
 
-.. code-block:: JSON
-
-    {
-    "username":"admin",
-    "password":"*******"
-    } 
-.. image:: /_static/iq.png
-
-2. From the response above **POST** the refresh token below after access token expires.
-
-.. code-block:: JSON 
+.. code-block:: text 
     
-    https://10.1.1.7/mgmt/shared/appsvcs/declare
+    https://raw.githubusercontent.com/jaustinf5/postman_collection/master/F5-Automation-and-Orchestration.postman_collection.json
 
-.. code-block:: JSON 
+.. image:: /_static/7_2.png
 
-    {
-    "refreshToken": {
-    "token": "insert token here"}
-    }
+5. Once imported, you will be able to see the Postman Collection "F5-Automatition-and-Orchestration" as seen below. 
+Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1 Application Service Deployment with AS3, etc.) and their respective requests.
 
-Create Postman Collection and Send Declaration
-----------------------------------------------    
+.. image:: /_static/7_3.png
 
-1. In the Collections tab click Create a collection and name it "AS3 To BIG-IQ Collection" and click Create.
 
-.. image:: /_static/AS3_BIGIQCollection.png
 
-2. In the newly created "AS3 To BIG-IQ Collection", click the three dots and select Add Request.
+Send AS3 Templates to BIG-IQ with Postman  
+-----------------------------------------
 
-.. image:: /_static/AS3_BIGIQRequest.png
+.. NOTE:: The declarations titled "AS3-F5-\*-big-iq-default" are requests made by F5 that work with BIG-IQ 7.0. 
+When we send the declaration, the template will be stored on the BIG-IQ.
 
-3. In the pop-up window enter “AS3 Declaration” for Request name and click Save to “AS3 Collection”
+1. Click into "Lab 3.2 - Using AS3 with BIG-IQ 7.0" and open the request, "Authenticate to BIG-IQ".
 
-.. image:: /_static/AS3_BIGIQDeets.png
+2. Open the "Body" tab to view the JSON declaration as seen below.
 
-4. Expand the AS3 To BIG-IQ Collection and click the “AS3 Declaration” request.
+.. image:: /_static/7_4.png
 
-.. image:: /_static/AS3_BIGIQExpanded.png
+3. To send this declaration to the URI "https://10.1.1.8/mgmt/shared/authn/login" click the blue "Send" button on the right.
 
-5. Click “GET”, which is the default method, and select “POST” from the dropdown.
+4. Ensure that the response is 200.
 
-.. image:: /_static/AS3_BIGIQPost.png
+.. image:: /_static/7_5.png
 
-6. In the “Enter request URL” bar enter:
+*** If error: "Invalid registered claims.", the token has expired. Resend "Authenticate to BIG-IQ" request to fix.***
 
-.. code-block:: TMSH
+5. Click into the request "AS3-F5-HTTP-lb-template-big-iq-default". Open the "Body" tab to view the JSON declaration.
 
-    https://10.1.1.7/mgmt/shared/appsvcs/declare
+.. image:: /_static/7_6.png
 
-7. Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as "admin”
+6. Click the blue "Send" button on the right. Ensure that response is 200.
 
-.. image:: /_static/AS3_BIGIQAuth.png
+.. image:: /_static/7_7.png
 
-8. Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”
 
-.. image:: /_static/AS3_BIGIQblob.png
+Create an Application with an AS3 Template in BIG-IQ
+----------------------------------------------------
 
-9. Paste the following declaration into the text box:
+1. Open Chrome and navigate to the bookmark titled "BIG-IQ (10.1.1.8)".
 
-.. code-block:: JSON 
+2. Login to the BIG-IQ: username = admin, password = GoodBaklava123@
 
-    {
-        "class": "AS3",
-        "declaration": {
-            "class": "ADC",
-            "schemaVersion": "3.13.0",
-            "id": "bigiq_app_test",
-            "label": "Test",
-            "remark": "Generic app",
-            "target": {
-                "hostname": "ip-10-1-1-7.us-west-2.compute.internal"
-            },
-            "BigIQ_App_Tenant": {
-                "class": "Tenant",
-                "BigIQApp": {
-                    "class": "Application",
-                    "template": "generic",
-                    "BigIQVS": {
-                        "class": "Service_Generic",
-                        "virtualAddresses": [
-                            "10.1.20.9"
-                        ],
-                        "virtualPort":80,
-                        "pool": "pool_with_vip"
-                    },
-                
-                    "pool_with_vip": {
-                        "class": "Pool",
-                        "monitors": [
-                            "http",
-                            {"use": "http_basic"},
-                            {"use": "http_index"},
-                            {"use": "http_default"}
-                        ],
-                        "members": [{
-                        "servicePort": 80,
-                        "serverAddresses": [
-                            "10.1.10.5"
-                        ]
-                        }]
-                    },
-                
-                    "http_basic": {
-                        "class": "Monitor",
-                        "monitorType": "http",
-                        "interval":4,
-                        "timeout": 13,
-                        "send": "GET /basic.html\r\n"
-                    },
-                
-                    "http_index": {
-                        "class": "Monitor",
-                        "monitorType": "http",
-                        "interval":5,
-                        "timeout": 16,
-                        "send": "GET /index.html\r\n"
-                    },
-                
-                    "http_default": {
-                        "class": "Monitor",
-                        "monitorType": "http",
-                        "interval":8,
-                        "timeout": 25,
-                        "send": "GET /index.html\r\n"
-                    }
-                }
-            }
-        }
-    }    
+3. Click the Applications tab. In the left menu bar, select Application Templates. Now you will see your uploaded template.
 
-10. Save the request by clicking the save button next to the send button.
+.. image:: /_static/7_8.png
 
-11. Now we will configure our L4-L7 services by clicking the send button. You should get a 200 OK from Postman.
+3. Publish the template by checking the box next to the template name and then clicking "publish".
+When you receive the pop-up, click the blue "Publish" button.
 
-.. image:: /_static/AS3_BIGIQSuccess.png
+.. image:: /_static/7_9.png
 
-12. Open Chrome and check now BIG-IP has application. Also make sure you are in the correct partition.
+4. In the left menu bar, select Application and select the "Create" button.
 
-.. image:: /_static/bigiqapp.png
+.. image:: /_static/7_10.png
 
-Add New Request To Collection
------------------------------ 
+5. Enter an "Application Name". Here I've named mine, "app_made_by_as3_template".
 
-1. Follow the steps from 2-8 in the previous section this time the request name will be called "Clear Partition".
+6. From the "Template Type" dropdown, select our imported template.
 
-2. Paste the following declaration.
+.. image:: /_static/7_11.png
 
-.. code-block:: JSON
+7. For the "General Properties" section, enter similar information. For "Target", make sure to select the corresponding hostname to 10.1.1.7 from the dropdown
 
-    {
-    "class": "AS3",
-    "action": "deploy",
-    "declaration": {
-        "class": "ADC",
-        "schemaVersion": "3.13.0",
-        "new_partition": {
-            "class": "Tenant"        
-        }
-    }
- }
+.. image:: /_static/7_12.png
 
-3. Save the request
+8. For the "Pool" section, add "10.1.10.13" in "Server Addresses"
 
-.. image:: /_static/AS3_BIGIQClearBeforeSend.png
+.. image:: /_static/7_13.png
 
-4. Now we will delete the application by clicking the send button. You should get a 200 OK from Postman.
+9. For the "Service_HTTP" section, add "10.1.20.50" in "Virtual addresses". 
 
-.. image:: /_static/AS3_BIGIQClearSuccess.png
+.. image:: /_static/7_14.png
 
-5. Open Browser and check that BIG-IP has no application 
+10. Click the blue "Create" button. The page will load to below.
 
-.. image:: /_static/noas3.png
+.. image:: /_static/7_15.png
 
-.. NOTE:: This is the end of the lab
+
+View Created Application on BIG-IP (10.1.1.7) 
+----------------------------------------------
+
+1. Open a new tab in Chrome
+
+2. Open Chrome and navigate to the bookmark titled "(BIG-IP 10.1.1.87)". 
+
+3. Login to the BIG-IQ: username = admin, password = admin
+
+4. Change partition to your new partition.
+
+5. Open Local Traffic --> Network Map
+
+.. image:: /_static/7_16.png
+
+6. Open a new tab and enter the VIP 10.1.20.50 in the browser to view the app.
+
+.. image:: /_static/7_17.png
+
+
+.. NOTE:: End of the lab.
