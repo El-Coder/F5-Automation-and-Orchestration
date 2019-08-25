@@ -76,11 +76,13 @@
         <span class="nav-sidebartoc">
             <ul>
 <li><a class="reference internal" href="#">3.2.1. Using AS3 with BIG-IQ 7.0</a></li>
-<li><a class="reference internal" href="#view-big-iq-without-as3-templates">3.2.2. View BIG-IQ Without AS3 Templates</a></li>
-<li><a class="reference internal" href="#import-postman-collection-from-github">3.2.3. Import Postman Collection from GitHub</a></li>
-<li><a class="reference internal" href="#send-as3-templates-to-big-iq-with-postman">3.2.4. Send AS3 Templates to BIG-IQ with Postman</a></li>
-<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.5. Create an Application with an AS3 Template in BIG-IQ</a></li>
-<li><a class="reference internal" href="#view-created-application-on-big-ip-10-1-1-7">3.2.6. View Created Application on BIG-IP (10.1.1.7)</a></li>
+<li><a class="reference internal" href="#view-big-iq-without-as3-templates">3.2.2. View BIG-IQ Without AS3 Templates</a><ul>
+<li><a class="reference internal" href="#configure-postman-app">3.2.2.1. Configure Postman App</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#send-as3-templates-to-big-iq-with-postman">3.2.3. Send AS3 Templates to BIG-IQ with Postman</a></li>
+<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.4. Create an Application with an AS3 Template in BIG-IQ</a></li>
+<li><a class="reference internal" href="#view-created-application-on-big-ip-10-1-1-7">3.2.5. View Created Application on BIG-IP (10.1.1.7)</a></li>
 </ul>
 
          </span>
@@ -133,38 +135,35 @@ and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 <li>Click the Applications tab. In the left menu bar, select Application Templates.</li>
 </ol>
 <img alt="../../_images/7_1.png" src="../../_images/7_1.png" />
-<ol class="arabic simple" start="3">
+<ol class="arabic simple" start="4">
 <li>Notice above that AS3 Templates is empty.</li>
 </ol>
-</div>
-<div class="section" id="import-postman-collection-from-github">
-<h1>3.2.3. Import Postman Collection from GitHub<a class="headerlink" href="#import-postman-collection-from-github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configure-postman-app">
+<h2>3.2.2.1. Configure Postman App<a class="headerlink" href="#configure-postman-app" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Open the Postman application on the Windows desktop.</li>
+<li>Open the Postman application</li>
 </ol>
+<img alt="../../_images/desktop.png" src="../../_images/desktop.png" />
+<ol class="arabic simple" start="2">
+<li>At the bottom of the page in grey text select “Skip signing in and take me straight to the app”</li>
+</ol>
+<img alt="../../_images/skip.png" src="../../_images/skip.png" />
 <ol class="arabic simple" start="3">
-<li>Turn off “SSL certificate verificattion” by going to “File” in the top right, selecting “Settings” from the dropdown and in “General” turning off the “SSL certificate verificattion” button.</li>
+<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification</li>
 </ol>
-<p>4. Use the Postman Import feature to import the pre-made Postman Collection.
-To do this: (1) Click the Import button. (2) Click Import from Link.
-(3) For the Postman Collection, paste in the following and (4) click Import.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://raw.githubusercontent.com/jaustinf5/postman_collection/master/F5-Automation-and-Orchestration.postman_collection.json
-</pre></div>
+<img alt="../../_images/settings.png" src="../../_images/settings.png" />
+<img alt="../../_images/ssl.png" src="../../_images/ssl.png" />
 </div>
-<img alt="../../_images/7_2.png" src="../../_images/7_2.png" />
-<p>5. Once imported, you will be able to see the Postman Collection “F5-Automatition-and-Orchestration” as seen below.
-Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1 Application Service Deployment with AS3, etc.) and their respective requests.</p>
-<img alt="../../_images/7_3.png" src="../../_images/7_3.png" />
 </div>
 <div class="section" id="send-as3-templates-to-big-iq-with-postman">
-<h1>3.2.4. Send AS3 Templates to BIG-IQ with Postman<a class="headerlink" href="#send-as3-templates-to-big-iq-with-postman" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.3. Send AS3 Templates to BIG-IQ with Postman<a class="headerlink" href="#send-as3-templates-to-big-iq-with-postman" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The declarations titled “AS3-F5-*-big-iq-default” are requests made by F5 that work with BIG-IQ 7.0.</p>
 </div>
 <p>When we send the declaration, the template will be stored on the BIG-IQ.</p>
 <ol class="arabic simple">
-<li>Click into “Lab 3.2 - Using AS3 with BIG-IQ 7.0” and open the request, “Authenticate to BIG-IQ”.</li>
+<li>Click on the Collections tab then click on “Lab 3.2 - Using AS3 with BIG-IQ 7.0” and open the request, “Authenticate to BIG-IQ”.</li>
 <li>Open the “Body” tab to view the JSON declaration as seen below.</li>
 </ol>
 <img alt="../../_images/7_4.png" src="../../_images/7_4.png" />
@@ -184,7 +183,7 @@ Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1
 <img alt="../../_images/7_7.png" src="../../_images/7_7.png" />
 </div>
 <div class="section" id="create-an-application-with-an-as3-template-in-big-iq">
-<h1>3.2.5. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.4. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Open Chrome and navigate to the bookmark titled “BIG-IQ (10.1.1.8)”.</li>
 <li>Login to the BIG-IQ: username = admin, password = GoodBaklava123&#64;</li>
@@ -221,7 +220,7 @@ When you receive the pop-up, click the blue “Publish” button.</p>
 <img alt="../../_images/7_15.png" src="../../_images/7_15.png" />
 </div>
 <div class="section" id="view-created-application-on-big-ip-10-1-1-7">
-<h1>3.2.6. View Created Application on BIG-IP (10.1.1.7)<a class="headerlink" href="#view-created-application-on-big-ip-10-1-1-7" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.5. View Created Application on BIG-IP (10.1.1.7)<a class="headerlink" href="#view-created-application-on-big-ip-10-1-1-7" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Open a new tab in Chrome</li>
 <li>Open Chrome and navigate to the bookmark titled “(BIG-IP 10.1.1.87)”.</li>

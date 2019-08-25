@@ -78,8 +78,7 @@
 <li><a class="reference internal" href="#">3.1.1. Deploy UDF</a></li>
 <li><a class="reference internal" href="#login-into-big-ip">3.1.2. Login into BIG-IP</a></li>
 <li><a class="reference internal" href="#configure-postman-app">3.1.3. Configure Postman App</a></li>
-<li><a class="reference internal" href="#create-postman-collection-and-send-declaration">3.1.4. Create Postman Collection and Send Declaration</a></li>
-<li><a class="reference internal" href="#add-new-request-to-collection">3.1.5. Add New Request To Collection</a></li>
+<li><a class="reference internal" href="#send-declarations">3.1.4. Send Declarations</a></li>
 </ul>
 
          </span>
@@ -123,15 +122,15 @@
 <img alt="../../_images/udf.png" src="../../_images/udf.png" />
 <ol class="arabic simple">
 <li>Navigate to <a class="reference external" href="https://udf.f5.com">https://udf.f5.com</a></li>
-<li>Open “Blueprints” in the left menu bar</li>
-<li>In the search bar enter, “A&amp;O Toolchain Demo”</li>
-<li>Click the green “Deploy” button</li>
-<li>Open “Deployments” in the left menu bar</li>
-<li>In the “A&amp;O Toolchain Demo” tile, click “Start”</li>
-<li>In the “A&amp;O Toolchain Demo” tile, click “Details”</li>
-<li>Open “Components” in the menu bar</li>
-<li>Wait until all components have started</li>
-<li>Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”</li>
+<li>Open “Blueprints” in the left menu bar.</li>
+<li>In the search bar enter, “A&amp;O Toolchain Demo”.</li>
+<li>Click the green “Deploy” button.</li>
+<li>Open “Deployments” in the left menu bar.</li>
+<li>In the “A&amp;O Toolchain Demo” tile, click “Start”.</li>
+<li>In the “A&amp;O Toolchain Demo” tile, click “Details”.</li>
+<li>Open “Components” in the menu bar.</li>
+<li>Wait until all components have started.</li>
+<li>Under the “Systems” in the “win2016” tile, click the “Access” dropdown and click “RDP”.</li>
 </ol>
 <img alt="../../_images/rdp.png" src="../../_images/rdp.png" />
 </div>
@@ -148,166 +147,51 @@
 </ol>
 <img alt="../../_images/AS3_Login.png" src="../../_images/AS3_Login.png" />
 <ol class="arabic simple" start="5">
-<li>Verify no application is already on BIG-IP</li>
+<li>Verify no application is already on BIG-IP.</li>
 </ol>
 <img alt="../../_images/noapp.png" src="../../_images/noapp.png" />
 </div>
 <div class="section" id="configure-postman-app">
 <h1>3.1.3. Configure Postman App<a class="headerlink" href="#configure-postman-app" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>Open the Postman application</li>
+<li>Open the Postman application.</li>
 </ol>
 <img alt="../../_images/desktop.png" src="../../_images/desktop.png" />
 <ol class="arabic simple" start="2">
-<li>At the bottom of the page in grey text select “Skip signing in and take me straight to the app”</li>
+<li>At the bottom of the page in grey text select “Skip signing in and take me straight to the app”.</li>
 </ol>
 <img alt="../../_images/skip.png" src="../../_images/skip.png" />
 <ol class="arabic simple" start="3">
-<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification</li>
+<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification.</li>
 </ol>
 <img alt="../../_images/settings.png" src="../../_images/settings.png" />
 <img alt="../../_images/ssl.png" src="../../_images/ssl.png" />
 </div>
-<div class="section" id="create-postman-collection-and-send-declaration">
-<h1>3.1.4. Create Postman Collection and Send Declaration<a class="headerlink" href="#create-postman-collection-and-send-declaration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="send-declarations">
+<h1>3.1.4. Send Declarations<a class="headerlink" href="#send-declarations" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>In the Collections tab click Create a collection and name it “AS3 Collection” and click Create.</li>
+<li>Click the collection Lab 3.1 - Application Service Deployments with AS3.</li>
 </ol>
-<img alt="../../_images/AS3_Collection.png" src="../../_images/AS3_Collection.png" />
+<img alt="../../_images/3_1-1.png" src="../../_images/3_1-1.png" />
 <ol class="arabic simple" start="2">
-<li>In the newly created “AS3 Collection”, click the three dots and select Add Request.</li>
+<li>Click the request “Get AS3 Services Version Info”. Then click the send button. This returns version and release information for the instance of AS3 you are using. It also shows current and minimum required versions of the AS3 schema.</li>
+<li>Now we will deploy our L4-7 services. Click the request “Deploy HTTP_Service”. Then click the send button. Ensure that the response is 200.</li>
 </ol>
-<img alt="../../_images/AS3_Dots.png" src="../../_images/AS3_Dots.png" />
-<ol class="arabic simple" start="3">
-<li>In the pop-up window enter “AS3 Declaration” for Request name and click Save to “AS3 Collection”</li>
-</ol>
-<img alt="../../_images/AS3_Request.png" src="../../_images/AS3_Request.png" />
-<ol class="arabic simple" start="4">
-<li>Expand the AS3 Collection and click the “AS3 Declaration” request.</li>
-</ol>
-<img alt="../../_images/AS3_Expanded.png" src="../../_images/AS3_Expanded.png" />
+<img alt="../../_images/3_1-2.png" src="../../_images/3_1-2.png" />
 <ol class="arabic simple" start="5">
-<li>Click “GET”, which is the default method, and select “POST” from the dropdown.</li>
-</ol>
-<img alt="../../_images/AS3_Post.png" src="../../_images/AS3_Post.png" />
-<ol class="arabic simple" start="6">
-<li>In the “Enter request URL” bar enter:</li>
-</ol>
-<div class="highlight-TMSH notranslate"><div class="highlight"><pre><span></span>https://10.1.1.7/mgmt/shared/appsvcs/declare
-</pre></div>
-</div>
-<ol class="arabic simple" start="7">
-<li>Open the “Authorization” tab in the menu bar. Under the “Type” dropdown, click “Basic Auth” Enter in Username as “admin” and Password as “admin”</li>
-</ol>
-<img alt="../../_images/AS3_Auth.png" src="../../_images/AS3_Auth.png" />
-<ol class="arabic simple" start="8">
-<li>Open the “Body” tab in the menu bar Select the “raw” radial button In the “Text” dropdown select “JSON (application/json)”</li>
-</ol>
-<img alt="../../_images/AS3_blob.png" src="../../_images/AS3_blob.png" />
-<ol class="arabic simple" start="9">
-<li>Paste the following declaration into the text box:</li>
-</ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;persist&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-
-    <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.13.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;controls&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;trace&quot;</span><span class="p">:</span> <span class="kc">true</span>
-        <span class="p">},</span>
-
-        <span class="nt">&quot;My_AS3_Tenant&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span><span class="p">,</span>
-
-            <span class="nt">&quot;My_AS3_App&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Application&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;generic&quot;</span><span class="p">,</span>
-
-
-                <span class="nt">&quot;Virtual_Server&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Service_Generic&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;virtualPort&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
-                    <span class="nt">&quot;virtualAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="s2">&quot;10.1.20.9&quot;</span>
-                    <span class="p">],</span>
-                    <span class="nt">&quot;pool&quot;</span><span class="p">:</span> <span class="s2">&quot;http_pool&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;profileHTTP&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;use&quot;</span><span class="p">:</span> <span class="s2">&quot;http&quot;</span><span class="p">}</span>
-                <span class="p">},</span>
-
-                <span class="nt">&quot;http_pool&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Pool&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;monitors&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="p">{</span>
-                            <span class="nt">&quot;bigip&quot;</span><span class="p">:</span> <span class="s2">&quot;/Common/http_index&quot;</span>
-                        <span class="p">},</span>
-                        <span class="p">{</span>
-                            <span class="nt">&quot;bigip&quot;</span><span class="p">:</span> <span class="s2">&quot;/Common/http_basic&quot;</span>
-                        <span class="p">},</span>
-                        <span class="p">{</span>
-                            <span class="nt">&quot;bigip&quot;</span><span class="p">:</span> <span class="s2">&quot;/Common/http_default&quot;</span>
-                        <span class="p">}</span>
-                    <span class="p">],</span>
-                    <span class="nt">&quot;members&quot;</span><span class="p">:[</span>
-                        <span class="p">{</span>
-                            <span class="nt">&quot;servicePort&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
-                            <span class="nt">&quot;serverAddresses&quot;</span><span class="p">:</span>
-                            <span class="p">[</span>
-                                <span class="s2">&quot;10.1.10.5&quot;</span>
-                            <span class="p">]</span>
-                        <span class="p">}</span>
-                    <span class="p">]</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="10">
-<li>Save the request by clicking the save button next to the send button.</li>
-</ol>
-<img alt="../../_images/AS3_Save.png" src="../../_images/AS3_Save.png" />
-<ol class="arabic simple" start="11">
-<li>Now we will configure our L4-L7 services by clicking the send button. You should get a 200 OK from Postman.</li>
-</ol>
-<img alt="../../_images/AS3_Success.png" src="../../_images/AS3_Success.png" />
-<ol class="arabic simple" start="12">
-<li>Open Chrome and check now BIG-IP has application. Also make sure you are in the correct partition.</li>
+<li>Login into BIG-IP to ensure services have been deployed.</li>
 </ol>
 <img alt="../../_images/app.png" src="../../_images/app.png" />
-</div>
-<div class="section" id="add-new-request-to-collection">
-<h1>3.1.5. Add New Request To Collection<a class="headerlink" href="#add-new-request-to-collection" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic simple">
-<li>Follow the steps from 2-8 in the previous section this time the request name will be called “Clear Partition”.</li>
-<li>Paste the following declaration.</li>
+<ol class="arabic simple" start="6">
+<li>Click the request “Get Deployed AS3 Services”. Then click the send button. This returns the most-recently-deployed declaration with all tenants that AS3 knows about.</li>
 </ol>
-<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span>
-   <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;AS3&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;deploy&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;declaration&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;ADC&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;schemaVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;3.13.0&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;new_partition&quot;</span><span class="p">:</span> <span class="p">{</span>
-           <span class="nt">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;Tenant&quot;</span>
-       <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li>Save the request</li>
+<img alt="../../_images/3_1-3.png" src="../../_images/3_1-3.png" />
+<ol class="arabic simple" start="7">
+<li>Now we will delete all services from this partition. Click the request “POST to Delete All Services Under Tenant Class”. Then click the send button. You should get a 200 OK from Postman.</li>
 </ol>
-<img alt="../../_images/AS3_ClearBeforeSend.png" src="../../_images/AS3_ClearBeforeSend.png" />
-<ol class="arabic simple" start="4">
-<li>Now we will delete the application by clicking the send button. You should get a 200 OK from Postman.</li>
-</ol>
-<img alt="../../_images/AS3_ClearSuccess.png" src="../../_images/AS3_ClearSuccess.png" />
-<ol class="arabic simple" start="5">
-<li>Open Browser and check that BIG-IP has no application</li>
+<img alt="../../_images/3_1-4.png" src="../../_images/3_1-4.png" />
+<ol class="arabic simple" start="8">
+<li>Open Browser and check that BIG-IP has no other services than from Common partition.</li>
 </ol>
 <img alt="../../_images/noas3.png" src="../../_images/noas3.png" />
 <div class="admonition note">

@@ -9,7 +9,7 @@ This lab guide assumes you know how to use postman. If not follow this tutorial 
 .. IMPORTANT:: AS3 is version agnostic and can simplify upgrades from one BIG-IP to another version.
 
 
-Expected time to complete: **1 hour**
+Expected time to complete: **20 Minutes**
 
 .. toctree::
    :maxdepth: 1

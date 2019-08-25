@@ -17,31 +17,24 @@ View BIG-IQ Without AS3 Templates
 
 .. image:: /_static/7_1.png
 
-3. Notice above that AS3 Templates is empty.
+4. Notice above that AS3 Templates is empty.
 
 
-Import Postman Collection from GitHub 
--------------------------------------
+Configure Postman App
+~~~~~~~~~~~~~~~~~~~~~  
+1. Open the Postman application
 
-1. Open the Postman application on the Windows desktop.
+.. image:: /_static/desktop.png
 
-3. Turn off "SSL certificate verificattion" by going to "File" in the top right, selecting "Settings" from the dropdown and in "General" turning off the "SSL certificate verificattion" button.
-4. Use the Postman Import feature to import the pre-made Postman Collection.
-To do this: (1) Click the Import button. (2) Click Import from Link. 
-(3) For the Postman Collection, paste in the following and (4) click Import.
-    
+2. At the bottom of the page in grey text select “Skip signing in and take me straight to the app”
 
-.. code-block:: text 
-    
-    https://raw.githubusercontent.com/jaustinf5/postman_collection/master/F5-Automation-and-Orchestration.postman_collection.json
+.. image:: /_static/skip.png
 
-.. image:: /_static/7_2.png
+3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification
 
-5. Once imported, you will be able to see the Postman Collection "F5-Automatition-and-Orchestration" as seen below. 
-Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1 Application Service Deployment with AS3, etc.) and their respective requests.
+.. image:: /_static/settings.png
 
-.. image:: /_static/7_3.png
-
+.. image:: /_static/ssl.png
 
 
 Send AS3 Templates to BIG-IQ with Postman  
@@ -50,7 +43,7 @@ Send AS3 Templates to BIG-IQ with Postman
 .. NOTE:: The declarations titled "AS3-F5-\*-big-iq-default" are requests made by F5 that work with BIG-IQ 7.0. 
 When we send the declaration, the template will be stored on the BIG-IQ.
 
-1. Click into "Lab 3.2 - Using AS3 with BIG-IQ 7.0" and open the request, "Authenticate to BIG-IQ".
+1. Click on the Collections tab then click on "Lab 3.2 - Using AS3 with BIG-IQ 7.0" and open the request, "Authenticate to BIG-IQ".
 
 2. Open the "Body" tab to view the JSON declaration as seen below.
 

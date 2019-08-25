@@ -28,7 +28,7 @@ This lab guide assumes you know how to use postman. If not follow this tutorial 
 5. You will get an email with the key. Keep the license key handy for when we send a declaration in the next section. 
 
 
-Expected time to complete: **1 hour**
+Expected time to complete: **15 Minutes**
 
 .. toctree::
    :maxdepth: 1

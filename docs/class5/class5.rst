@@ -40,7 +40,7 @@ In your local browser, navigate to https://federate.f5.com
 .. image:: /_static/business.png
 
 
-Expected time to complete: **1 hour**
+Expected time to complete: **30 Minutes**
 
 .. toctree::
    :maxdepth: 1
