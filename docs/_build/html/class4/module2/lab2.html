@@ -148,12 +148,13 @@ and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 <p>4. Use the Postman Import feature to import the pre-made Postman Collection.
 To do this: (1) Click the Import button. (2) Click Import from Link.
 (3) For the Postman Collection, paste in the following and (4) click Import.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://raw.githubusercontent.com/jaustinf5/postman_collection/master/F5-Automation-and-Orchestration.postman_collection.json
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
 </pre></div>
 </div>
 <img alt="../../_images/7_2.png" src="../../_images/7_2.png" />
-<p>5. Once imported, you will be able to see the Postman Collection “F5-Automatition-and-Orchestration” as seen below.
-Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1 Application Service Deployment with AS3, etc.) and their respective requests.</p>
+<ol class="arabic simple" start="5">
+<li>Once imported, you will be able to see the Postman Collection “BIG-IQ 7.0 Collection” as seen below.</li>
+</ol>
 <img alt="../../_images/7_3.png" src="../../_images/7_3.png" />
 </div>
 <div class="section" id="send-as3-templates-to-big-iq-with-postman">
@@ -164,7 +165,7 @@ Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1
 </div>
 <p>When we send the declaration, the template will be stored on the BIG-IQ.</p>
 <ol class="arabic simple">
-<li>Click into “Lab 3.2 - Using AS3 with BIG-IQ 7.0” and open the request, “Authenticate to BIG-IQ”.</li>
+<li>Click into “BIG-IQ 7.0 Collection” and open the request, “Authenticate to BIG-IQ”.</li>
 <li>Open the “Body” tab to view the JSON declaration as seen below.</li>
 </ol>
 <img alt="../../_images/7_4.png" src="../../_images/7_4.png" />
@@ -187,7 +188,7 @@ Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1
 <h1>3.2.5. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Open Chrome and navigate to the bookmark titled “BIG-IQ (10.1.1.8)”.</li>
-<li>Login to the BIG-IQ: username = admin, password = GoodBaklava123&#64;</li>
+<li>Login to the BIG-IQ: username = admin, password = Admin123&#64;</li>
 <li>Click the Applications tab. In the left menu bar, select Application Templates. Now you will see your uploaded template.</li>
 </ol>
 <img alt="../../_images/7_8.png" src="../../_images/7_8.png" />

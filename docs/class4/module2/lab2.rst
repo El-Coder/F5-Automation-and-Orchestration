@@ -33,12 +33,11 @@ To do this: (1) Click the Import button. (2) Click Import from Link.
 
 .. code-block:: text 
     
-    https://raw.githubusercontent.com/jaustinf5/postman_collection/master/F5-Automation-and-Orchestration.postman_collection.json
+    https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
 
 .. image:: /_static/7_2.png
 
-5. Once imported, you will be able to see the Postman Collection "F5-Automatition-and-Orchestration" as seen below. 
-Click the Collection to see nested folders (Lab 2.1 Declaratiive Onboarding, 3.1 Application Service Deployment with AS3, etc.) and their respective requests.
+5. Once imported, you will be able to see the Postman Collection "BIG-IQ 7.0 Collection" as seen below. 
 
 .. image:: /_static/7_3.png
 
@@ -50,7 +49,7 @@ Send AS3 Templates to BIG-IQ with Postman
 .. NOTE:: The declarations titled "AS3-F5-\*-big-iq-default" are requests made by F5 that work with BIG-IQ 7.0. 
 When we send the declaration, the template will be stored on the BIG-IQ.
 
-1. Click into "Lab 3.2 - Using AS3 with BIG-IQ 7.0" and open the request, "Authenticate to BIG-IQ".
+1. Click into "BIG-IQ 7.0 Collection" and open the request, "Authenticate to BIG-IQ".
 
 2. Open the "Body" tab to view the JSON declaration as seen below.
 
@@ -78,7 +77,7 @@ Create an Application with an AS3 Template in BIG-IQ
 
 1. Open Chrome and navigate to the bookmark titled "BIG-IQ (10.1.1.8)".
 
-2. Login to the BIG-IQ: username = admin, password = GoodBaklava123@
+2. Login to the BIG-IQ: username = admin, password = Admin123@
 
 3. Click the Applications tab. In the left menu bar, select Application Templates. Now you will see your uploaded template.
 
