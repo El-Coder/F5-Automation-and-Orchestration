@@ -28,11 +28,15 @@ Configure Postman App
 
 2. At the bottom of the page in grey text select “Skip signing in and take me straight to the app”
 
-.. image:: /_static/skip.png
+.. code-block:: text 
+    
+    https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
 
 3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification
 
-.. image:: /_static/settings.png
+5. Once imported, you will be able to see the Postman Collection "BIG-IQ 7.0 Collection" as seen below. 
+
+.. image:: /_static/7_3.png
 
 .. image:: /_static/ssl.png
 
@@ -43,7 +47,7 @@ Send AS3 Templates to BIG-IQ with Postman
 .. NOTE:: The declarations titled "AS3-F5-\*-big-iq-default" are requests made by F5 that work with BIG-IQ 7.0. 
 When we send the declaration, the template will be stored on the BIG-IQ.
 
-1. Click on the Collections tab then click on "Lab 3.2 - Using AS3 with BIG-IQ 7.0" and open the request, "Authenticate to BIG-IQ".
+1. Click into "BIG-IQ 7.0 Collection" and open the request, "Authenticate to BIG-IQ".
 
 2. Open the "Body" tab to view the JSON declaration as seen below.
 
@@ -71,7 +75,7 @@ Create an Application with an AS3 Template in BIG-IQ
 
 1. Open Chrome and navigate to the bookmark titled "BIG-IQ (10.1.1.8)".
 
-2. Login to the BIG-IQ: username = admin, password = GoodBaklava123@
+2. Login to the BIG-IQ: username = admin, password = Admin123@
 
 3. Click the Applications tab. In the left menu bar, select Application Templates. Now you will see your uploaded template.
 
