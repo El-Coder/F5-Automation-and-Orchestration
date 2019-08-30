@@ -28,23 +28,15 @@ Configure Postman App
 
 2. At the bottom of the page in grey text select “Skip signing in and take me straight to the app”
 
-<<<<<<< HEAD
-.. image:: /_static/skip.png
-=======
 .. code-block:: text 
     
     https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
->>>>>>> 1b3618ba0dcaeaf30c892b0319efa9dc0d9c0f28
 
 3. If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification
 
-<<<<<<< HEAD
-.. image:: /_static/settings.png
-=======
 5. Once imported, you will be able to see the Postman Collection "BIG-IQ 7.0 Collection" as seen below. 
 
 .. image:: /_static/7_3.png
->>>>>>> 1b3618ba0dcaeaf30c892b0319efa9dc0d9c0f28
 
 .. image:: /_static/ssl.png
 
@@ -55,11 +47,7 @@ Send AS3 Templates to BIG-IQ with Postman
 .. NOTE:: The declarations titled "AS3-F5-\*-big-iq-default" are requests made by F5 that work with BIG-IQ 7.0. 
 When we send the declaration, the template will be stored on the BIG-IQ.
 
-<<<<<<< HEAD
-1. Click on the Collections tab then click on "Lab 3.2 - Using AS3 with BIG-IQ 7.0" and open the request, "Authenticate to BIG-IQ".
-=======
 1. Click into "BIG-IQ 7.0 Collection" and open the request, "Authenticate to BIG-IQ".
->>>>>>> 1b3618ba0dcaeaf30c892b0319efa9dc0d9c0f28
 
 2. Open the "Body" tab to view the JSON declaration as seen below.
 
