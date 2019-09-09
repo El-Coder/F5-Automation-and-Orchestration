@@ -76,13 +76,13 @@
         <span class="nav-sidebartoc">
             <ul>
 <li><a class="reference internal" href="#">3.2.1. Using AS3 with BIG-IQ 7.0</a></li>
-<li><a class="reference internal" href="#view-big-iq-without-as3-templates">3.2.2. View BIG-IQ Without AS3 Templates</a><ul>
-<li><a class="reference internal" href="#configure-postman-app">3.2.2.1. Configure Postman App</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#send-as3-templates-to-big-iq-with-postman">3.2.3. Send AS3 Templates to BIG-IQ with Postman</a></li>
-<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.4. Create an Application with an AS3 Template in BIG-IQ</a></li>
-<li><a class="reference internal" href="#view-created-application-on-big-ip-10-1-1-7">3.2.5. View Created Application on BIG-IP (10.1.1.7)</a></li>
+<li><a class="reference internal" href="#view-big-iq-without-as3-templates">3.2.2. View BIG-IQ Without AS3 Templates</a></li>
+<li><a class="reference internal" href="#import-postman-collection-from-github">3.2.3. Import Postman Collection from GitHub</a></li>
+<li><a class="reference internal" href="#upload-as3-templates-to-big-iq">3.2.4. Upload AS3 Templates to BIG-IQ</a></li>
+<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.5. Create an Application with an AS3 Template in BIG-IQ</a></li>
+<li><a class="reference internal" href="#enable-rbac">3.2.6. Enable RBAC</a></li>
+<li><a class="reference internal" href="#create-a-new-application-via-as3-template">3.2.7. Create a new Application via AS3 Template</a></li>
+<li><a class="reference internal" href="#move-the-application-to-a-new-app-service">3.2.8. Move the Application to a new App Service</a></li>
 </ul>
 
          </span>
@@ -123,9 +123,7 @@
     
   <div class="section" id="using-as3-with-big-iq-7-0">
 <h1>3.2.1. Using AS3 with BIG-IQ 7.0<a class="headerlink" href="#using-as3-with-big-iq-7-0" title="Permalink to this headline">¶</a></h1>
-<p>With BIG-IQ version 7.0 we can upload AS3 templates to the BIG-IQ with Postman.
-In the BIG-IQ GUI we can set values (IP addresses, ports, Tenant name)
-and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
+<p>We can upload AS3 templates to BIG-IQ 7.0 and deploy applications to target BIG-IPs (10.1.1.7 for this lab).</p>
 </div>
 <div class="section" id="view-big-iq-without-as3-templates">
 <h1>3.2.2. View BIG-IQ Without AS3 Templates<a class="headerlink" href="#view-big-iq-without-as3-templates" title="Permalink to this headline">¶</a></h1>
@@ -135,38 +133,36 @@ and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 <li>Click the Applications tab. In the left menu bar, select Application Templates.</li>
 </ol>
 <img alt="../../_images/7_1.png" src="../../_images/7_1.png" />
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="3">
 <li>Notice above that AS3 Templates is empty.</li>
 </ol>
-<div class="section" id="configure-postman-app">
-<h2>3.2.2.1. Configure Postman App<a class="headerlink" href="#configure-postman-app" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="import-postman-collection-from-github">
+<h1>3.2.3. Import Postman Collection from GitHub<a class="headerlink" href="#import-postman-collection-from-github" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>Open the Postman application</li>
+<li>Open the Postman application on the Windows desktop.</li>
 </ol>
-<img alt="../../_images/desktop.png" src="../../_images/desktop.png" />
-<ol class="arabic simple" start="2">
-<li>At the bottom of the page in grey text select “Skip signing in and take me straight to the app”</li>
+<ol class="arabic simple" start="3">
+<li>Turn off “SSL certificate verificattion” by going to “File” in the top right, selecting “Settings” from the dropdown and in “General” turning off the “SSL certificate verificattion” button.</li>
 </ol>
+<p>4. Use the Postman Import feature to import the pre-made Postman Collection.
+To do this: (1) Click the Import button. (2) Click Import from Link.
+(3) For the Postman Collection, paste in the following and (4) click Import.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li>If presented with one, exit the pop-up screen. Toggle off “SSL certification verification” by navigating to File then Settings then under the General tab, toggle SSL certification verification</li>
-</ol>
+<img alt="../../_images/7_2.png" src="../../_images/7_2.png" />
 <ol class="arabic simple" start="5">
 <li>Once imported, you will be able to see the Postman Collection “BIG-IQ 7.0 Collection” as seen below.</li>
 </ol>
 <img alt="../../_images/7_3.png" src="../../_images/7_3.png" />
-<img alt="../../_images/ssl.png" src="../../_images/ssl.png" />
 </div>
-</div>
-<div class="section" id="send-as3-templates-to-big-iq-with-postman">
-<h1>3.2.3. Send AS3 Templates to BIG-IQ with Postman<a class="headerlink" href="#send-as3-templates-to-big-iq-with-postman" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="upload-as3-templates-to-big-iq">
+<h1>3.2.4. Upload AS3 Templates to BIG-IQ<a class="headerlink" href="#upload-as3-templates-to-big-iq" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The declarations titled “AS3-F5-*-big-iq-default” are requests made by F5 that work with BIG-IQ 7.0.</p>
+<p class="last">Find templates <a class="reference external" href="https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_as3_template.html">https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_as3_template.html</a></p>
 </div>
-<p>When we send the declaration, the template will be stored on the BIG-IQ.</p>
 <ol class="arabic simple">
 <li>Click into “BIG-IQ 7.0 Collection” and open the request, “Authenticate to BIG-IQ”.</li>
 <li>Open the “Body” tab to view the JSON declaration as seen below.</li>
@@ -177,9 +173,12 @@ and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 <li>Ensure that the response is 200.</li>
 </ol>
 <img alt="../../_images/7_5.png" src="../../_images/7_5.png" />
-<p><strong>* If error: “Invalid registered claims.”, the token has expired. Resend “Authenticate to BIG-IQ” request to fix.*</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Auth tokens expire every 5 minutes. “Invalid registered claims.” means the token has expired. Resend “Authenticate to BIG-IQ” request to fix.</p>
+</div>
 <ol class="arabic simple" start="5">
-<li>Click into the request “AS3-F5-HTTP-lb-template-big-iq-default”. Open the “Body” tab to view the JSON declaration.</li>
+<li>Click into the request “Upload HTTP Template to BIG-IQ”. Open the “Body” tab to view the JSON declaration.</li>
 </ol>
 <img alt="../../_images/7_6.png" src="../../_images/7_6.png" />
 <ol class="arabic simple" start="6">
@@ -188,7 +187,7 @@ and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 <img alt="../../_images/7_7.png" src="../../_images/7_7.png" />
 </div>
 <div class="section" id="create-an-application-with-an-as3-template-in-big-iq">
-<h1>3.2.4. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.5. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Open Chrome and navigate to the bookmark titled “BIG-IQ (10.1.1.8)”.</li>
 <li>Login to the BIG-IQ: username = admin, password = Admin123&#64;</li>
@@ -198,46 +197,57 @@ and then send that AS3 template to a target BIG-IP (10.1.1.7 for this lab).</p>
 <p>3. Publish the template by checking the box next to the template name and then clicking “publish”.
 When you receive the pop-up, click the blue “Publish” button.</p>
 <img alt="../../_images/7_9.png" src="../../_images/7_9.png" />
-<ol class="arabic simple" start="4">
-<li>In the left menu bar, select Application and select the “Create” button.</li>
-</ol>
-<img alt="../../_images/7_10.png" src="../../_images/7_10.png" />
-<ol class="arabic simple" start="5">
-<li>Enter an “Application Name”. Here I’ve named mine, “app_made_by_as3_template”.</li>
-<li>From the “Template Type” dropdown, select our imported template.</li>
-</ol>
-<img alt="../../_images/7_11.png" src="../../_images/7_11.png" />
-<ol class="arabic simple" start="7">
-<li>For the “General Properties” section, enter similar information. For “Target”, make sure to select the corresponding hostname to 10.1.1.7 from the dropdown</li>
-</ol>
-<img alt="../../_images/7_12.png" src="../../_images/7_12.png" />
-<ol class="arabic simple" start="8">
-<li>For the “Pool” section, add “10.1.10.13” in “Server Addresses”</li>
-</ol>
-<img alt="../../_images/7_13.png" src="../../_images/7_13.png" />
-<ol class="arabic simple" start="9">
-<li>For the “Service_HTTP” section, add “10.1.20.50” in “Virtual addresses”.</li>
-</ol>
-<img alt="../../_images/7_14.png" src="../../_images/7_14.png" />
-<ol class="arabic simple" start="10">
-<li>Click the blue “Create” button. The page will load to below.</li>
-</ol>
-<img alt="../../_images/7_15.png" src="../../_images/7_15.png" />
 </div>
-<div class="section" id="view-created-application-on-big-ip-10-1-1-7">
-<h1>3.2.5. View Created Application on BIG-IP (10.1.1.7)<a class="headerlink" href="#view-created-application-on-big-ip-10-1-1-7" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="enable-rbac">
+<h1>3.2.6. Enable RBAC<a class="headerlink" href="#enable-rbac" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>Open a new tab in Chrome</li>
-<li>Open Chrome and navigate to the bookmark titled “(BIG-IP 10.1.1.87)”.</li>
-<li>Login to the BIG-IQ: username = admin, password = admin</li>
-<li>Change partition to your new partition.</li>
-<li>Open Local Traffic –&gt; Network Map</li>
+<li>In the top menu bar, select Application. Under Role Management select “Roles”. Under Custom Roles select “Application Roles”. Select “Admin Role”.</li>
 </ol>
-<img alt="../../_images/7_16.png" src="../../_images/7_16.png" />
-<ol class="arabic simple" start="6">
-<li>Open a new tab and enter the VIP 10.1.20.50 in the browser to view the app.</li>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If not created, create a new custom applicationi role</p>
+</div>
+<img alt="../../_images/7_18.png" src="../../_images/7_18.png" />
+<ol class="arabic simple" start="2">
+<li>For the Active Users and Groups section ensure admin is selected.</li>
+<li>For the section AS3 Templates section ensure your template is selected.</li>
 </ol>
-<img alt="../../_images/7_17.png" src="../../_images/7_17.png" />
+<img alt="../../_images/7_19.png" src="../../_images/7_19.png" />
+<ol class="arabic simple" start="4">
+<li>Click Save &amp; Close</li>
+</ol>
+</div>
+<div class="section" id="create-a-new-application-via-as3-template">
+<h1>3.2.7. Create a new Application via AS3 Template<a class="headerlink" href="#create-a-new-application-via-as3-template" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Open the Postman Application</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You might have to re-auth by sending the Authenticate to BIG-IQ declaration</p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Open and send the “Create HTTP App with Template” declaration.</li>
+</ol>
+<img alt="../../_images/7_20.png" src="../../_images/7_20.png" />
+<ol class="arabic simple" start="3">
+<li>Open Chrome and view the application on the BIG-IP (10.1.1.7). Login is “admin”, “admin”.</li>
+</ol>
+<img alt="../../_images/7_21.png" src="../../_images/7_21.png" />
+</div>
+<div class="section" id="move-the-application-to-a-new-app-service">
+<h1>3.2.8. Move the Application to a new App Service<a class="headerlink" href="#move-the-application-to-a-new-app-service" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Navigate to the BIG-IQ at 10.1.1.8</li>
+<li>Click on the Application tab and open the Unknown Applications titled</li>
+<li>Select the newly created applicaton and select “Move”.</li>
+<li>Enter “AS3 Apps” for the Application Name.</li>
+</ol>
+<img alt="../../_images/7_22.png" src="../../_images/7_22.png" />
+<ol class="arabic simple" start="5">
+<li>Now navigate back to the Applications and see your newly created tile.</li>
+</ol>
+<img alt="../../_images/7_23.png" src="../../_images/7_23.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">End of the lab.</p>
