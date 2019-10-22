@@ -18,35 +18,12 @@ View BIG-IQ Without AS3 Templates
 3. Notice above that AS3 Templates is empty.
 
 
-Import Postman Collection from GitHub 
--------------------------------------
-
-1. Open the Postman application on the Windows desktop.
-
-3. Turn off "SSL certificate verificattion" by going to "File" in the top right, selecting "Settings" from the dropdown and in "General" turning off the "SSL certificate verificattion" button.
-4. Use the Postman Import feature to import the pre-made Postman Collection.
-To do this: (1) Click the Import button. (2) Click Import from Link. 
-(3) For the Postman Collection, paste in the following and (4) click Import.
-    
-
-.. code-block:: text 
-    
-    https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
-
-.. image:: /_static/7_2.png
-
-5. Once imported, you will be able to see the Postman Collection "BIG-IQ 7.0 Collection" as seen below. 
-
-.. image:: /_static/7_3.png
-
-
-
 Upload AS3 Templates to BIG-IQ  
 ------------------------------
 
 .. NOTE:: Find templates https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_as3_template.html
 
-1. Click into "BIG-IQ 7.0 Collection" and open the request, "Authenticate to BIG-IQ".
+1. Open the Postman application on the Windows desktop and click "BIG-IQ 7.0 Collection" and open the request, "Authenticate to BIG-IQ".
 
 2. Open the "Body" tab to view the JSON declaration as seen below.
 
@@ -91,7 +68,7 @@ Enable RBAC
 -----------
 1. In the top menu bar, select Application. Under Role Management select "Roles". Under Custom Roles select "Application Roles". Select "Admin Role".
 
-.. NOTE:: If not created, create a new custom applicationi role
+.. NOTE:: If not created, create a new custom application role
 
 .. image:: /_static/7_18.png
 
@@ -127,7 +104,7 @@ Move the Application to a new App Service
 
 2. Click on the Application tab and open the Unknown Applications titled
 
-3. Select the newly created applicaton and select "Move".
+3. Select the newly created application and select "Move".
 
 4. Enter "AS3 Apps" for the Application Name.
 
