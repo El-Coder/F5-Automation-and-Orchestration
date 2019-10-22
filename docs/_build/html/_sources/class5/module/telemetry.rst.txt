@@ -84,7 +84,7 @@ Setup AWS CloudWatch Log Group
 
 .. image:: /_static/my_log.png
 
-10. Click “test_log_group”.
+10. Click “my_log_group”.
 
 .. image:: /_static/my_log_g.png
 

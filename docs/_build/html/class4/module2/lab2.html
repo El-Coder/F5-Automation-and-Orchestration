@@ -77,12 +77,11 @@
             <ul>
 <li><a class="reference internal" href="#">3.2.1. Using AS3 with BIG-IQ 7.0</a></li>
 <li><a class="reference internal" href="#view-big-iq-without-as3-templates">3.2.2. View BIG-IQ Without AS3 Templates</a></li>
-<li><a class="reference internal" href="#import-postman-collection-from-github">3.2.3. Import Postman Collection from GitHub</a></li>
-<li><a class="reference internal" href="#upload-as3-templates-to-big-iq">3.2.4. Upload AS3 Templates to BIG-IQ</a></li>
-<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.5. Create an Application with an AS3 Template in BIG-IQ</a></li>
-<li><a class="reference internal" href="#enable-rbac">3.2.6. Enable RBAC</a></li>
-<li><a class="reference internal" href="#create-a-new-application-via-as3-template">3.2.7. Create a new Application via AS3 Template</a></li>
-<li><a class="reference internal" href="#move-the-application-to-a-new-app-service">3.2.8. Move the Application to a new App Service</a></li>
+<li><a class="reference internal" href="#upload-as3-templates-to-big-iq">3.2.3. Upload AS3 Templates to BIG-IQ</a></li>
+<li><a class="reference internal" href="#create-an-application-with-an-as3-template-in-big-iq">3.2.4. Create an Application with an AS3 Template in BIG-IQ</a></li>
+<li><a class="reference internal" href="#enable-rbac">3.2.5. Enable RBAC</a></li>
+<li><a class="reference internal" href="#create-a-new-application-via-as3-template">3.2.6. Create a new Application via AS3 Template</a></li>
+<li><a class="reference internal" href="#move-the-application-to-a-new-app-service">3.2.7. Move the Application to a new App Service</a></li>
 </ul>
 
          </span>
@@ -137,34 +136,14 @@
 <li>Notice above that AS3 Templates is empty.</li>
 </ol>
 </div>
-<div class="section" id="import-postman-collection-from-github">
-<h1>3.2.3. Import Postman Collection from GitHub<a class="headerlink" href="#import-postman-collection-from-github" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic simple">
-<li>Open the Postman application on the Windows desktop.</li>
-</ol>
-<ol class="arabic simple" start="3">
-<li>Turn off “SSL certificate verificattion” by going to “File” in the top right, selecting “Settings” from the dropdown and in “General” turning off the “SSL certificate verificattion” button.</li>
-</ol>
-<p>4. Use the Postman Import feature to import the pre-made Postman Collection.
-To do this: (1) Click the Import button. (2) Click Import from Link.
-(3) For the Postman Collection, paste in the following and (4) click Import.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://raw.githubusercontent.com/jaustinf5/postman_collection/master/BIG-IQ 7.0 Collection.postman_collection.json
-</pre></div>
-</div>
-<img alt="../../_images/7_2.png" src="../../_images/7_2.png" />
-<ol class="arabic simple" start="5">
-<li>Once imported, you will be able to see the Postman Collection “BIG-IQ 7.0 Collection” as seen below.</li>
-</ol>
-<img alt="../../_images/7_3.png" src="../../_images/7_3.png" />
-</div>
 <div class="section" id="upload-as3-templates-to-big-iq">
-<h1>3.2.4. Upload AS3 Templates to BIG-IQ<a class="headerlink" href="#upload-as3-templates-to-big-iq" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.3. Upload AS3 Templates to BIG-IQ<a class="headerlink" href="#upload-as3-templates-to-big-iq" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Find templates <a class="reference external" href="https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_as3_template.html">https://clouddocs.f5.com/products/big-iq/mgmt-api/v6.1.0/ApiReferences/bigiq_public_api_ref/r_as3_template.html</a></p>
 </div>
 <ol class="arabic simple">
-<li>Click into “BIG-IQ 7.0 Collection” and open the request, “Authenticate to BIG-IQ”.</li>
+<li>Open the Postman application on the Windows desktop and click “BIG-IQ 7.0 Collection” and open the request, “Authenticate to BIG-IQ”.</li>
 <li>Open the “Body” tab to view the JSON declaration as seen below.</li>
 </ol>
 <img alt="../../_images/7_4.png" src="../../_images/7_4.png" />
@@ -187,7 +166,7 @@ To do this: (1) Click the Import button. (2) Click Import from Link.
 <img alt="../../_images/7_7.png" src="../../_images/7_7.png" />
 </div>
 <div class="section" id="create-an-application-with-an-as3-template-in-big-iq">
-<h1>3.2.5. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.4. Create an Application with an AS3 Template in BIG-IQ<a class="headerlink" href="#create-an-application-with-an-as3-template-in-big-iq" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Open Chrome and navigate to the bookmark titled “BIG-IQ (10.1.1.8)”.</li>
 <li>Login to the BIG-IQ: username = admin, password = Admin123&#64;</li>
@@ -199,13 +178,13 @@ When you receive the pop-up, click the blue “Publish” button.</p>
 <img alt="../../_images/7_9.png" src="../../_images/7_9.png" />
 </div>
 <div class="section" id="enable-rbac">
-<h1>3.2.6. Enable RBAC<a class="headerlink" href="#enable-rbac" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.5. Enable RBAC<a class="headerlink" href="#enable-rbac" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>In the top menu bar, select Application. Under Role Management select “Roles”. Under Custom Roles select “Application Roles”. Select “Admin Role”.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If not created, create a new custom applicationi role</p>
+<p class="last">If not created, create a new custom application role</p>
 </div>
 <img alt="../../_images/7_18.png" src="../../_images/7_18.png" />
 <ol class="arabic simple" start="2">
@@ -218,7 +197,7 @@ When you receive the pop-up, click the blue “Publish” button.</p>
 </ol>
 </div>
 <div class="section" id="create-a-new-application-via-as3-template">
-<h1>3.2.7. Create a new Application via AS3 Template<a class="headerlink" href="#create-a-new-application-via-as3-template" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.6. Create a new Application via AS3 Template<a class="headerlink" href="#create-a-new-application-via-as3-template" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Open the Postman Application</li>
 </ol>
@@ -236,11 +215,11 @@ When you receive the pop-up, click the blue “Publish” button.</p>
 <img alt="../../_images/7_21.png" src="../../_images/7_21.png" />
 </div>
 <div class="section" id="move-the-application-to-a-new-app-service">
-<h1>3.2.8. Move the Application to a new App Service<a class="headerlink" href="#move-the-application-to-a-new-app-service" title="Permalink to this headline">¶</a></h1>
+<h1>3.2.7. Move the Application to a new App Service<a class="headerlink" href="#move-the-application-to-a-new-app-service" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
 <li>Navigate to the BIG-IQ at 10.1.1.8</li>
 <li>Click on the Application tab and open the Unknown Applications titled</li>
-<li>Select the newly created applicaton and select “Move”.</li>
+<li>Select the newly created application and select “Move”.</li>
 <li>Enter “AS3 Apps” for the Application Name.</li>
 </ol>
 <img alt="../../_images/7_22.png" src="../../_images/7_22.png" />
