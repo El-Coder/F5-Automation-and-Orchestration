@@ -9,7 +9,7 @@ View BIG-IQ Without AS3 Templates
 
 1. Open Chrome and navigate to the bookmark titled "(BIG-IQ 10.1.1.8)". 
 
-2. Login to the BIG-IQ: username = admin, password = GoodBaklava123@
+2. Login to the BIG-IQ: username = admin, password = Admin123@
 
 3. Click the Applications tab. In the left menu bar, select Application Templates.
 
@@ -61,7 +61,6 @@ Create an Application with an AS3 Template in BIG-IQ
 When you receive the pop-up, click the blue "Publish" button.
 
 .. image:: /_static/7_9.png
-
 
 
 Enable RBAC
