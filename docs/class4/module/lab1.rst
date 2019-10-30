@@ -80,11 +80,25 @@ Send Declarations
 
 .. image:: /_static/3_1-3.png
 
-7. Now we will delete all services from this partition. Click the request "POST to Delete All Services Under Tenant Class". Then click the send button. You should get a 200 OK from Postman.
+7. Now we will deploy a service with an ASM policy. Click the request "Deploy HTTP Service With External ASM policy". Then click the send button. Ensure that the response is 200.
+
+.. image:: /_static/3_1-5.png
+
+8. Ensure the policy is enabled by going back into the BIG-IP under Security then clicking on Application Security and lastly on Security Policies.
+
+.. image:: /_static/asmlist.png
+
+9. Also ensure you are in the correct partition.
+
+.. image:: /_static/asm.png
+
+10. Now we will delete all services from this partition. Click the request "Delete All Services Under Tenant Class". Then click the send button. You should get a 200 OK from Postman.
 
 .. image:: /_static/3_1-4.png
 
-8. Open Browser and check that BIG-IP has no other services than from Common partition. 
+.. NOTE :: For more information on deleting tenants https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/refguide/as3-api.html#method-delete 
+
+11. Open Browser and check that BIG-IP has no other services than from Common partition. 
 
 .. image:: /_static/noas3.png
 

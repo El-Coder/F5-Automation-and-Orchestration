@@ -9,7 +9,7 @@ Environments & Lab Topology
 The following components have been included in your lab environment:
 
 - 3 x F5 BIG-IP VE (1 for v13.x, 2 for v14.x)
-- 2 x F5 BIG-IQ VE (6.x)
+- 2 x F5 BIG-IQ VE (7.x, 6.x)
 - 1 x Linux Server
 - 1 x Windows Jumphost
 

@@ -187,10 +187,26 @@
 </ol>
 <img alt="../../_images/3_1-3.png" src="../../_images/3_1-3.png" />
 <ol class="arabic simple" start="7">
-<li>Now we will delete all services from this partition. Click the request “POST to Delete All Services Under Tenant Class”. Then click the send button. You should get a 200 OK from Postman.</li>
+<li>Now we will deploy a service with an ASM policy. Click the request “Deploy HTTP Service With External ASM policy”. Then click the send button. Ensure that the response is 200.</li>
+</ol>
+<img alt="../../_images/3_1-5.png" src="../../_images/3_1-5.png" />
+<ol class="arabic simple" start="8">
+<li>Ensure the policy is enabled by going back into the BIG-IP under Security then clicking on Application Security and lastly on Security Policies.</li>
+</ol>
+<img alt="../../_images/asmlist.png" src="../../_images/asmlist.png" />
+<ol class="arabic simple" start="9">
+<li>Also ensure you are in the correct partition.</li>
+</ol>
+<img alt="../../_images/asm.png" src="../../_images/asm.png" />
+<ol class="arabic simple" start="10">
+<li>Now we will delete all services from this partition. Click the request “Delete All Services Under Tenant Class”. Then click the send button. You should get a 200 OK from Postman.</li>
 </ol>
 <img alt="../../_images/3_1-4.png" src="../../_images/3_1-4.png" />
-<ol class="arabic simple" start="8">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more information on deleting tenants <a class="reference external" href="https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/refguide/as3-api.html#method-delete">https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/refguide/as3-api.html#method-delete</a></p>
+</div>
+<ol class="arabic simple" start="11">
 <li>Open Browser and check that BIG-IP has no other services than from Common partition.</li>
 </ol>
 <img alt="../../_images/noas3.png" src="../../_images/noas3.png" />
